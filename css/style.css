@@ -5,6 +5,9 @@
 }
 :root {
   font-size: 18px;
+  --lt-color-green: #76BC7B;
+  --dk-color-green: #405946;
+  --dk-background-color: #1f1f1f;
 }
 body,
 h1,
@@ -22,7 +25,10 @@ a {
   color: #5227c5;
   text-decoration: none;
 }
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
   line-height: 124%;
   font-weight: 700;
 }
@@ -64,7 +70,8 @@ ol {
 html:focus-within {
   scroll-behavior: smooth;
 }
-body, button {
+body,
+button {
   font-size: 18px;
   font-weight: 400;
   font-family: "Lato", sans-serif;
@@ -147,12 +154,16 @@ select {
 .margin-bottom-32 {
   margin-bottom: 32px;
 }
-.gap-48, .gap-32, .gap-24, .gap-16, .gap-8 {
+.gap-48,
+.gap-32,
+.gap-24,
+.gap-16,
+.gap-8 {
   display: flex;
   flex-direction: column;
 }
 .gap-48 {
-  gap: 48px
+  gap: 48px;
 }
 .gap-32 {
   gap: 32px;
@@ -194,14 +205,14 @@ select {
   background: #c5bafa;
 }
 .header-wrap-about-me {
-  background: #C5BAFA;
+  background: #c5bafa;
 }
 .header-content {
   padding: 32px 0;
 }
 .card-lowsugar,
 .header-wrap-lowsugar {
-  background: #76bc7b;
+  background: var(--lt-color-green);
 }
 .dfw-image {
   margin-bottom: 16px;
@@ -319,7 +330,7 @@ button {
   background-color: #ffd639;
 }
 #icon-list-green {
-  background-color: #76bc7b;
+  background-color: var(--lt-color-green);
 }
 .sticker {
   background-color: #000000;
@@ -364,3 +375,53 @@ button {
     object-fit: cover;
   }
 }
+/* Dark mode in progress
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #eee;
+    background: var(--dk-background-color);
+  }
+  a,
+  .link {
+    color: #9ea2f9;
+  }
+  hr {
+    border-color: #eee;
+  }
+  .card,
+  button,
+  .project-img {
+    box-shadow: 6px 6px 0px #eee;
+  }
+  .header-wrap-about-me,
+  .header-wrap-cmb {
+    background: #352875;
+  }
+  .header-wrap-lowsugar {
+    background: var(--dk-color-green);
+  }
+  .icon-link {
+    color: #eee;
+  }
+  @media (pointer: fine) {
+    .link:hover {
+      background-color: #34343a;
+    }
+    .btn:hover,
+    .card:hover,
+    .project-img:hover,
+    .iframe-content:hover {
+      transform: translateY(4px);
+      box-shadow: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .card-no-hover:hover {
+      transform: translateY(0px);
+      cursor: not-allowed;
+      box-shadow: 6px 6px 0px #eee;
+    }
+  }
+}
+*/
