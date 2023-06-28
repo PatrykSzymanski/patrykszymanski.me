@@ -288,7 +288,7 @@ button {
 }
 .cmb-image {
   align-self: flex-end;
-  margin-right: -16px;
+  margin-right: -32px;
 }
 .iframe-container {
   position: relative;
@@ -359,7 +359,7 @@ button {
     margin-top: 32px;
   }
   .ccc-image {
-    padding-top: 12%;
+    padding-top: 18%;
   }
   .euphire-image {
     padding-top: 12%;
