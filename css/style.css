@@ -146,6 +146,7 @@ select {
   text-decoration: none;
   color: #5227c5;
   width: fit-content;
+  font-style: normal;
 }
 .margin-32 {
   margin-top: 32px;
