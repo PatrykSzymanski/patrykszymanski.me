@@ -237,7 +237,8 @@ select {
   filter: drop-shadow(-8px 8px 0px rgba(0, 0, 0, 0.3));
 }
 .get-in-touch {
-  padding-top: 96px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 footer {
   align-items: center;
