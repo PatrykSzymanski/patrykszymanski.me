@@ -351,6 +351,11 @@ button {
   .euphire-image {
     padding-top: 12%;
   }
+  .card-no-hover:hover {
+    transform: translateY(0px);
+    cursor: not-allowed;
+    box-shadow: 6px 6px 0px black;
+  }
 }
 @media screen and (max-width: 620px) {
   .header-image-wrap {
