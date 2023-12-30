@@ -116,11 +116,6 @@ button {
     background-color: #eaeaea;
     text-decoration: none;
   }
-  .card-no-hover:hover {
-    transform: translateY(0px);
-    cursor: not-allowed;
-    box-shadow: 6px 6px 0px black;
-  }
 }
 hr {
   border: 1px solid black;
@@ -333,16 +328,6 @@ button {
 }
 #icon-list-green {
   background-color: var(--lt-color-green);
-}
-.sticker {
-  background-color: #000000;
-  color: white;
-  align-self: stretch;
-  flex-direction: column;
-  margin: 0 -16px;
-  padding: 16px 0;
-  text-align: center;
-  flex-shrink: 0;
 }
 .content-wrap {
   margin: 32px 0;
