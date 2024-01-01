@@ -30,6 +30,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.png" type="image/png">
 
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 </head>
 
 <body>
@@ -48,24 +49,24 @@
     <div class="grid">
       <div class="header-content gap-32 col-desk-12 col-tab-12 col-mob-4">
         <div class="gap-32 col-desk-12">
-          <a href="./" class="link icon-link">
-            <img src="images/icons/icon-back.svg" width="24" height="24" alt="">
+          <a href="./" class="link icon-link" style="color: #8E6EE2;">
+            <img src="images/icons/icon-back-custom.svg" width="24" height="24" alt="">
             Back
           </a>
-          <h1>CCC Club – UX Case Study</h1>
+          <h1 style="color: #ffffff">CCC Club – UX Case Study</h1>
           <div class="gap-8">
-            <h2 class="sub-header">Product Design</h2>
-            <h2 class="sub-header">2022</h2>
+            <h2 class="sub-header" style="color: #ffffff">Product Design</h2>
+            <h2 class="sub-header" style="color: #ffffff">2022</h2>
+          </div>
+          <div class="gallery header-image-wrap col-desk-12 col-tab-12 col-mob-4">
+            <dotlottie-player class="header-image"
+              src="https://lottie.host/19564afb-46e1-4d74-b220-a490e845bbb9/Pz72P6pkpH.lottie"
+              speed="1" direction="1" mode="normal" loop autoplay></dotlottie-player>
+              
           </div>
         </div>
-        <figure class="gallery header-image-wrap col-desk-12 col-tab-12 col-mob-4">
-          <a href="images/ccc/ccc-header-image.webp" data-pswp-width="1920" data-pswp-height="905.6">
-            <img class="header-image" src="images/ccc/ccc-header-image.webp" alt="###" />
-          </a>
-        </figure>
       </div>
-    </div>
-    <hr>
+      <hr>
   </header>
   <main class="grid margin-32">
     <div class="content-wrap gap-48 col-desk-8 col-tab-8 col-mob-4">

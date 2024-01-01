@@ -183,8 +183,11 @@ select {
   justify-content: space-between;
   text-decoration: none;
 }
-.card-ccc, .header-wrap-ccc {
+.card-ccc {
   background-color: #eedabf;
+}
+.header-wrap-ccc {
+  background-color: #000000;
 }
 .lowsugar-image {
   margin-bottom: 24px;
