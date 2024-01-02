@@ -19,6 +19,7 @@
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://www.patrykszymanski.me/my-work-cmb">
   <meta property="twitter:title" content="Case study – Patryk Szymański">
+  <meta name="robots" content="noindex, nofollow">
   <meta property="twitter:description"
     content="UX Designer based in Kraków, Poland. See my portfolio and case studies.">
   <meta property="twitter:image"
@@ -29,6 +30,8 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.png" type="image/png">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
+
 </head>
 
 <body>
@@ -37,9 +40,9 @@
   <link rel="stylesheet" href="css/photoswipe.css">
   <nav class="grid">
     <ul class="nav-items col-desk-12 col-tab-12 col-mob-4">
-      <li><a class="link nav-item" href="./#my-work">My work</a></li>
-      <li><a class="link nav-item" href="./about-me">About me</a></li>
-      <li><a class="link nav-item" href="./#get-in-touch">Get in touch</a></li>
+      <li><a class="link nav-item" href="./#my-work.html">My work</a></li>
+      <li><a class="link nav-item" href="./about-me.html">About me</a></li>
+      <li><a class="link nav-item" href="./#get-in-touch.html">Get in touch</a></li>
     </ul>
   </nav>
   <hr>
@@ -47,24 +50,21 @@
     <div class="grid">
       <div class="header-content gap-32 col-desk-12 col-tab-12 col-mob-4">
         <div class="gap-32 col-desk-12">
-          <a href="./" class="link icon-link">
-            <img src="images/icons/icon-back.svg" width="24" height="24" alt="">
+          <a href="./" class="link icon-link icon-back-custom">
+            <img src="images/icons/icon-back-custom.svg" width="24" height="24" alt="">
             Back
           </a>
-          <h1>CCC Club – UX Case Study</h1>
+          <h1 style="color: #ffffff">CCC Club – UX Case Study</h1>
           <div class="gap-8">
-            <h2 class="sub-header">Product Design</h2>
-            <h2 class="sub-header">2022</h2>
+            <h2 class="sub-header" style="color: #ffffff">Product Design</h2>
+            <h2 class="sub-header" style="color: #ffffff">2022</h2>
           </div>
         </div>
-        <figure class="gallery header-image-wrap col-desk-12 col-tab-12 col-mob-4">
-          <a href="images/ccc/ccc-header-image.webp" data-pswp-width="1920" data-pswp-height="905.6">
-            <img class="header-image" src="images/ccc/ccc-header-image.webp" alt="###" />
-          </a>
-        </figure>
+        <div class="col-desk-12 col-tab-12 col-mob-4">
+          <div id="lottie"></div>
+        </div>
       </div>
-    </div>
-    <hr>
+      <hr>
   </header>
   <main class="grid margin-32">
     <div class="content-wrap gap-48 col-desk-8 col-tab-8 col-mob-4">
@@ -73,9 +73,9 @@
         <div class="gap-16">
           <p>
             CCC is one of the biggest Polish footwear and fashion companies.
-            How big, you might ask? 1 in 5 Poles is a CCC Club member.
           </p>
-          <p>CCC Club is more than just a loyalty program. It’s a multi-channel system, featuring:</p>
+          <p>How big, you might ask? <strong>1 in 5 Poles is a CCC Club member</strong>.</p>
+          <p>The CCC Club is more than just a loyalty program. It’s a multi-channel system, featuring:</p>
           <ul>
             <li>A rewards program linked to customer spending</li>
             <li>Physical membership cards</li>
@@ -90,8 +90,8 @@
             <li>Moving CCC Club cards from physical to digital formats</li>
           </ul>
           <p>
-            <a class="link" href="https://ccc.eu/pl/klub-ccc" target="_blank" style="display: inline;">Club CCC landing
-              page</a>(in polish)
+            <a class="link" href="https://ccc.eu/pl/klub-ccc" target="_blank" style="display: inline;">View the CCC Club
+              landing page</a>(in polish)
           </p>
         </div>
       </section>
@@ -102,7 +102,7 @@
             As a member of the Experience Design Team, I was responsible for assessing the current state of UX in the
             product and coming up with possible strategies to implement.
           </p>
-          <p>Project objectives:</p>
+          <p><strong>Project objectives</strong></p>
           <ol>
             <li>Identify and address major client pain points throughout the Customer Journey.</li>
             <li>Define and prioritize short-term and long-term improvement opportunities.</li>
@@ -114,7 +114,8 @@
         <h2>How</h2>
         <div class="gap-16">
           <p>
-            The project was based on cross-team collaboration. I started by bringing together the CCC Club team,
+            The project was based on <strong>cross-team collaboration</strong>. I started by bringing together the CCC
+            Club team,
             marketing specialists, data analysts, and software developers.
           </p>
           <p>During the kick-off workshop I facilitated, we aimed to understand the core of the CCC Club: user profiles,
@@ -123,24 +124,24 @@
           <figure class="gallery figure">
             <a href="images/ccc/ccc-communication-diagram.webp" data-pswp-width="1920" data-pswp-height="1080">
               <img class="project-img" src="images/ccc/ccc-communication-diagram.webp"
-                alt="Diagram showing collaboration between CCC departaments" />
+                alt="Diagram showing collaboration between departments within CCC" />
             </a>
-            <figure-caption>Collaboration digaram</figure-caption>
+            <figure-caption>Collaboration diagram</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
-          <h3>Key Tasks</h3>
+          <h3>Key tasks</h3>
           <ul>
-            <li>Conducting a thorough user journey audit.</li>
-            <li>Gathering and analyzing both qualitative and quantitative data.</li>
-            <li>Identifying quick wins for immediate UX improvement.</li>
-            <li>Developing a UX strategy and a corresponding development roadmap.</li>
-            <li>Creating designs aligned with the product roadmap.</li>
+            <li>Conducting a thorough user journey audit</li>
+            <li>Gathering and analyzing both qualitative and quantitative data</li>
+            <li>Identifying quick wins for immediate UX improvement</li>
+            <li>Developing a UX strategy and a corresponding development roadmap</li>
+            <li>Creating designs aligned with the product roadmap</li>
           </ul>
         </div>
       </section>
       <section class="gap-24">
-        <h2>Main Challenge</h2>
+        <h2>Main challenge</h2>
         <div class="gap-16">
           <p>CCC Club has been around for over a decade now. During that time, the UX standards and user expectations
             have evolved. The CCC Club was doing well business-wise. To keep it that way, we need to adapt it to the
@@ -152,39 +153,41 @@
         <div class="gap-16">
           <h3>Main outcomes</h3>
           <ol>
-            <li>An in-depth report with actionable recommendations for improving the user experience, with business
-              value in mind.</li>
+            <li>An in-depth report with <strong>actionable recommendations</strong> for improving the user experience,
+              with business
+              value in mind</li>
             <li>Close-knit collaboration between teams, closer than ever before (thanks to a series of workshops I
-              conducted).</li>
-            <li>Setting up short-term and long-term UX strategies for the CCC Club.</li>
+              conducted)</li>
+            <li>Setting up <strong>short-term and long-term UX strategies</strong> for the CCC Club</li>
           </ol>
         </div>
-        <div class="gap-16">
+        <div class="gap-16" id="strategy">
           <h3>UX strategy
           </h3>
           <p>An in-depth UX strategy, outlining the current state and future development plans.</p>
           <figure class="gallery figure">
             <a href="images/ccc/CCC-strategy.webp" data-pswp-width="1920" data-pswp-height="1129">
-              <img class="project-img" src="images/ccc/CCC-strategy.webp" alt="Document showing CCC UX strategy" />
+              <img class="project-img" src="images/ccc/CCC-strategy.webp" alt="Document describing the CCC UX strategy" />
             </a>
-            <figure-caption>UX strategy</figure-caption>
+            <figure-caption>UX strategy outline: bird’s eye view, short-term and long-term UX
+              recommendations</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
           <h3>UX audit</h3>
-          <p>A detailed UX audit, identifying over 30 issues and proposed solutions.</p>
+          <p>A detailed UX audit, identifying over <strong>30 issues and proposed solutions</strong>.</p>
           <figure class="gallery figure">
             <a href="images/ccc/CCC-audit-zoom.webp" data-pswp-width="1920" data-pswp-height="952">
               <img class="project-img" src="images/ccc/CCC-audit-zoom.webp"
-                alt="Document showing CCC UX audit in detail" />
+                alt="Document describing the CCC UX audit in detail" />
             </a>
           </figure>
           <figure class="gallery figure">
             <a href="images/ccc/CCC-audit-overview.webp" data-pswp-width="1920" data-pswp-height="1062">
               <img class="project-img" src="images/ccc/CCC-audit-overview.webp"
-                alt="Document showing CCC UX audit overview" />
+                alt="Document showing the CCC UX audit overview" />
             </a>
-            <figure-caption>UX audit</figure-caption>
+            <figure-caption>UX audit overview, featuring tags, screenshots, and priorities</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
@@ -192,31 +195,35 @@
           <p>A Jira roadmap based on the UX audit and strategy findings.</p>
           <p>(visuals unavailable, sorry!)</p>
         </div>
-        <div class="gap-16">
+        <div class="gap-16" id="quick-wins">
           <h3>Low hanging fruit
           </h3>
-          <p>Identified over 10 high-impact, low-effort initiatives using the Eisenhower Matrix.</p>
+          <p>Identified over <strong>10 high-impact</strong>, low-effort initiatives using the Eisenhower Matrix.</p>
           <figure class="gallery figure">
             <a href="images/ccc/CCC-quick-wins.webp" data-pswp-width="1920" data-pswp-height="1168">
               <img class="project-img" src="images/ccc/CCC-quick-wins.webp"
                 alt="Diagram showing sticky notes with quick wins" />
             </a>
-            <figure-caption>UX strategy</figure-caption>
+            <figure-caption>Eisenhower Matrix used for identifying low hanging fruit</figure-caption>
           </figure>
         </div>
-        <div class="gap-16">
+        <div class="gap-16" id="designs">
           <h3>Selected designs
           </h3>
           <p>Based on these deliverables, I designed solutions for opportunities identified in the CCC Club UX strategy.
-            Due to my NDA, I can only provide brief descriptions and overviews of 3 major projects:</p>
+            <strong>Due to my NDA</strong>, I can only provide brief descriptions and overviews of 3 major projects:
+          </p>
         </div>
         <div class="gap-16">
           <h4>1. CCC and HalfPrice sign-up flow</h4>
-          <p>Challenge: HalfPrice is an off-price store and a part of the CCC Group. Until now, the sign-up and the Club
+          <p><strong>Challenge:</strong> HalfPrice is an off-price store and a part of the CCC Group. Until now, the
+            sign-up and the Club
             experience were separated.</p>
-          <p>This project was particularly challenging, as it required cross-platform designs, including the CCC app,
+          <p>This project was particularly challenging, as it required <strong>cross-platform designs</strong>,
+            including the CCC app,
             CCC website (mobile and desktop), and the HalfPrice website. </p>
-          <p>Solution: Considering the shared user base between CCC and HalfPrice, I redesigned the sign-up flow for
+          <p><strong>Solution:</strong> Considering the shared user base between CCC and HalfPrice, I redesigned the
+            sign-up flow for
             both brands. The designs were later refined using the Rapid Iterative Testing and Evaluation (RITE) method
             with CCC Club members and prospects.</p>
         </div>
@@ -240,18 +247,18 @@
           <p>Check out the prototype and see it in action:</p>
           <div class="iframe-container">
             <iframe class="iframe-content"
-              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F79LUZKKyZBW6SBeYi9dlCp%2FCCC-Club-(PORTFOLIO)%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1-10513%26viewport%3D3777%252C5853%252C1.25%26t%3DkAIyLSR6Ux7Vpvcc-1%26scaling%3Dcontain%26starting-point-node-id%3D1%253A10513%26mode%3Ddesign"
+              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F79LUZKKyZBW6SBeYi9dlCp%2FCCC-Club-(PORTFOLIO)%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1-10513%26viewport%3D1348%252C765%252C0.17%26t%3DFRG9Uxg70T9C7SIK-1%26scaling%3Dcontain%26starting-point-node-id%3D1%253A10513%26mode%3Ddesign"
               allowfullscreen loading="lazy"></iframe>
           </div>
           <a class="link"
             href="https://www.figma.com/proto/79LUZKKyZBW6SBeYi9dlCp/CCC-Club-(PORTFOLIO)?page-id=0:1&type=design&node-id=1-10513&viewport=2446,3679,0.77&t=uZjidf68AzQcRor8-8&scaling=scale-down&starting-point-node-id=1:10513&hide-ui=1"
-            target="_blank">Nothing is showing up? Open Figma prototype</a>
+            target="_blank">Doesn't work? Open in Figma</a>
           <figure class="gallery figure">
             <a href="images/ccc/CCC-lp-overview.webp" data-pswp-width="1920" data-pswp-height="1181">
               <img class="project-img" src="images/ccc/CCC-lp-overview.webp"
                 alt="CCC Club landing page mockups overview in Figma" />
             </a>
-            <figure-caption>Landing page mockups overview</figure-caption>
+            <figure-caption>Landing page designs in Figma</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
@@ -260,25 +267,28 @@
             to be a significant pain point we discovered along the way.</p>
           <p> A good place to start was the CCC Club dashboard. It’s a hub where Club members can learn about their
             rewards, track their purchases and earned points, as well as get more information about the Club.</p>
-          <p>Main challenge: Club members don’t know their current Club status. They don’t understand the benefits
+          <p><strong>Main challenge:</strong> Club members don’t know their current Club status. They don’t understand
+            the benefits
             coming with a higher status.
           </p>
-          <p>Objective: Increase discoverability and usage of the Club status feature.</p>
-          <p>Proposed solution: To make sure users understand the relationship between their purchases and CCC Club
-            points, I combined order notifications with CCC Club notifications.</p>
-          <p>Instead of an orders list, the users now see an entire activity log. In there, they don’t only get notified
+          <p><strong>Objective:</strong> Increase discoverability and usage of the Club status feature.</p>
+          <p><strong>Proposed solution:</strong> To make sure users understand the relationship between their purchases
+            and CCC Club
+            points, <strong>I combined Club dashboard within orders list</strong>.</p>
+          <p>Instead of an orders list, the users now see an entire <strong>activity log</strong>. In there, they don’t
+            only get notified
             about updates on their order but also all things related to the CCC Club (e.g. reaching a new level or
             unlocking a new reward)</p>
-          <p>Check out the prototype and see it in action:</p>
+          <p>Check out the design concept:</p>
           <div class="iframe-container">
             <iframe class="iframe-content"
-              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F79LUZKKyZBW6SBeYi9dlCp%2FCCC-Club-(PORTFOLIO)%3Fpage-id%3D4%253A7506%26type%3Ddesign%26node-id%3D4-7507%26viewport%3D412%252C523%252C0.18%26t%3DfdV5EFuj5C68yYq3-1%26scaling%3Dcontain%26starting-point-node-id%3D4%253A7507%26mode%3Ddesign"
+              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F79LUZKKyZBW6SBeYi9dlCp%2FCCC-Club-(PORTFOLIO)%3Fpage-id%3D4%253A7506%26type%3Ddesign%26node-id%3D444-2976%26viewport%3D490%252C1573%252C0.77%26t%3DGKhyajDhqYrQAdaI-1%26scaling%3Dscale-down%26mode%3Ddesign"
               allowfullscreen loading="lazy">
             </iframe>
           </div>
           <a class="link"
             href="https://www.figma.com/proto/79LUZKKyZBW6SBeYi9dlCp/CCC-Club-(PORTFOLIO)?page-id=4:7506&type=design&node-id=4-7507&viewport=455,1106,0.75&t=NYR7qfD5FZpNLqc9-8&scaling=min-zoom&starting-point-node-id=4:7507&hide-ui=1"
-            target="_blank">Nothing is showing up? Open Figma prototype</a>
+            target="_blank">Doesn't work? Open in Figma</a>
         </div>
       </section>
       <section class="gap-24">
@@ -288,24 +298,29 @@
           <p>
             Together with the Head of User Experience, we defined the goals and the timeline for this project.
           </p>
-          <p>Challenge: The CCC Club never had a dedicated UX professional. Throughout the years, this led to many
+          <p><strong>Challenge:</strong> The CCC Club never had a dedicated UX professional. Throughout the years, this
+            led to many
             inconsistencies and usability debt.</p>
-          <p>Solution: Define how the UX Team can reduce usability debt and create a UX Strategy based on our findings.
+          <p><strong>Solution:</strong> Define how the UX Team can reduce usability debt and create a UX Strategy based
+            on our findings.
           </p>
-          <p>Method: To reach this goal, we agreed on using multiple methods, including the Opportunity Solution Tree.
+          <p><strong>Method:</strong> To reach this goal, we agreed on using multiple methods, including the
+            <strong>Opportunity Solution Tree</strong>.
             The idea was to align our UX team goals with high-level goals of the organization. We used OST later in the
-            process, during workshops (more on that later).</p>
+            process, during workshops (more on that later).
+          </p>
           <figure class="gallery figure">
             <a href="images/ccc/CCC-method.webp" data-pswp-width="1920" data-pswp-height="1062">
-              <img class="project-img" src="images/ccc/CCC-method.webp" alt="xxx" />
+              <img class="project-img" src="images/ccc/CCC-method.webp" alt="Opportunity solution tree overview" />
             </a>
-            <figure-caption>Opportunity Solution Tree</figure-caption>
+            <figure-caption>Opportunity Solution Tree structure in Miro</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
           <h3>2. Desk research</h3>
           <p>
-            Challenge: Over the years, the company already gathered plenty of data on our target group, including:
+            <strong>Challenge:</strong> Over the years, the company already gathered plenty of data on our target group,
+            including:
           </p>
           <ul>
             <li>User studies</li>
@@ -313,98 +328,115 @@
             <li>Session recordings (HotJar)</li>
           </ul>
           <p>The challenge was to make this data actionable for decision-making.</p>
-          <p>Solution and method: Based on these sources, I built a knowledge base to support my design decisions. I
+          <p><strong>Solution and method:</strong> Based on these sources, I built a <strong>knowledge base</strong> to
+            support my design decisions. I
             focused on:</p>
           <ul>
-            <li>Pain points on the customer journey</li>
-            <li>Core metrics, e.g. traffic, segments, conversion, etc.</li>
-            <li>Benchmarking using the <a href="https://baymard.com/" target="_blank" style="display: inline;">Baymard
-                Institute eCommerce</a> research base.</li>
-            <li>Setting up main KPIs to measure the outcomes of our work</li>
+            <li><strong>Pain points</strong> on the customer journey</li>
+            <li><strong>Core metrics</strong>, e.g. traffic, segments, conversion, etc.</li>
+            <li><strong>Benchmarking</strong> using the <a href="https://baymard.com/" target="_blank"
+                style="display: inline;">Baymard
+                Institute eCommerce research base</a>.</li>
+            <li><strong>Setting up main KPIs</strong> to measure the outcomes of our work</li>
           </ul>
         </div>
         <div class="gap-16">
           <h3>3. UX audit</h3>
-          <p>
-            Challenge: Find opportunities for improvement and define areas that need more research.
+          <p><strong>Challenge:</strong> Find opportunities for improvement and define areas that need more research.
           </p>
-          <p>Solution: Conduct a UX Audit.</p>
-
-          <p>Method: I used the cognitive walkthrough method and focused on digital touchpoints only (as this is the
+          <p><strong>Solution:</strong> Conduct a UX Audit.</p>
+          <p><strong>Method:</strong> I used the <strong>cognitive walkthrough</strong> method and focused on digital
+            touchpoints only (as this is the
             part we could impact most as the UX team). The process included:</p>
           <ol>
-            <li>Writing cognitive walkthrough scenarios</li>
-            <li>Going through each step of the user flow, taking screenshots and collecting them in Miro</li>
-            <li>Using sticky notes, adding comments and questions to every detail that needed more attention</li>
-            <li>Refinement with the User Experience Lead to make sure the project is headed in the right direction</li>
+            <li>Writing cognitive walkthrough <strong>scenarios</strong></li>
+            <li><strong>Going through each step</strong> of the user flow, taking screenshots and collecting them in
+              Miro</li>
+            <li>Using sticky notes, <strong>adding comments and questions</strong> to every detail that needed more
+              attention</li>
+            <li><strong>Refinement</strong> with the User Experience Lead to make sure the project is headed in the
+              right direction</li>
           </ol>
 
           <figure class="gallery figure">
             <a href="images/ccc/ccc-audit-process.webp" data-pswp-width="1920" data-pswp-height="1062">
-              <img class="project-img" src="images/ccc/ccc-audit-process.webp" alt="xxx" />
+              <img class="project-img" src="images/ccc/ccc-audit-process.webp" alt="Miro board describing the audit process" />
             </a>
-            <figure-caption>UX audit process</figure-caption>
+            <figure-caption>UX Audit Miro board</figure-caption>
           </figure>
 
           <figure class="gallery figure">
             <a href="images/ccc/ccc-cognitive-walkthrough.webp" data-pswp-width="1920" data-pswp-height="1062">
-              <img class="project-img" src="images/ccc/ccc-cognitive-walkthrough.webp" alt="xxx" />
+              <img class="project-img" src="images/ccc/ccc-cognitive-walkthrough.webp" alt="Cognitive Walktrough notes in a table" />
             </a>
-            <figure-caption>Cognitive walkthrough</figure-caption>
+            <figure-caption>Cognitive walkthrough notes</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
           <h3>5. Series of workshops</h3>
-          <p>Challenge: Communicate the findings across different teams and decide on next steps together.</p>
-          <p>Solution and method: This stage started with a short summary presentation. The presentation was then
-            followed by a series of workshops I facilitated. Together we have digged deeper into the work that needs to
+          <p><strong>Challenge:</strong> Communicate the findings across different teams and decide on next steps
+            together.</p>
+          <p><strong>Solution and method:</strong> This stage started with a short summary presentation. The
+            presentation was then
+            followed by a <strong>series of workshops</strong> I facilitated. Together we have digged deeper into the
+            work that needs to
             be done. This was not limited to the UX Team only. For instance, I sat together with the Marketing
             Communication Team to improve the way we communicate with our clients.</p>
           <figure class="gallery figure">
             <a href="images/ccc/ccc-communication.webp" data-pswp-width="1920" data-pswp-height="1062">
-              <img class="project-img" src="images/ccc/ccc-communication.webp" alt="xxx" />
+              <img class="project-img" src="images/ccc/ccc-communication.webp" alt="Miro board used during workshops" />
             </a>
-            <figure-caption>Part of the workshop with the Marketing Team</figure-caption>
+            <figure-caption>Miro board used during workshops </figure-caption>
           </figure>
         </div>
         <div class="gap-16">
           <h3>6. UX strategy and audit report</h3>
-          <p>Challenge: Effectively reach decision-makers to communicate what we can do to improve the user experience.
+          <p><strong>Challenge:</strong> Effectively reach decision-makers to communicate what we can do to improve the
+            user experience.
           </p>
-          <p>Solution and method: After the workshops, I summarized all the findings using two documents, focused on
+          <p><strong>Solution and method:</strong> After the workshops, I summarized all the findings using two
+            documents, focused on
             opportunities and solutions.</p>
-          <p>(See more in Deliverables)</p>
+          <p>(See more in <a href="#strategy">Deliverables</a>)</p>
         </div>
         <div class="gap-16">
           <h3>7. Low hanging fruits</h3>
-          <p>Challenge: A product with more than 10 years of legacy is difficult to change right away. From the start,
+          <p><strong>Challenge:</strong> A product with more than 10 years of legacy is difficult to change right away.
+            From the start,
             we knew we’re in it for the long run. But where do we start?</p>
-          <p>Solution: One of the defined goals was to find quick wins for the company. We looked for changed that can
+          <p><strong>Solution:</strong> One of the defined goals was to find quick wins for the company. We looked for
+            changed that can
             be implemented right away with the help of our CMS developers.</p>
-          <p>Method: Using the Eisenhower Matrix, I conducted a workshop with peers and stakeholders to find ideas with
-            high impact and low effort.</p>
-          <p>(See more in Deliverables)</p>
+          <p><strong>Method:</strong> Using the <strong>Eisenhower Matrix</strong>, I conducted a
+            <strong>workshop</strong> with peers and stakeholders to find ideas with
+            <strong>high impact and low effort</strong>.
+          </p>
+          <p>(See more in <a href="#quick-wins">Deliverables</a>)</p>
         </div>
         <div class="gap-16">
           <h3>8. Roadmap</h3>
           <p>Challenge: Fit all the proposed changes within the long-term product roadmap.</p>
-          <p>Solution and method: Together with UX Manager, we prepared a development roadmap for the CCC Club. We also
+          <p>Solution and method: Together with UX Manager, we prepared a <strong>development roadmap</strong> for the
+            CCC Club. We also
             introduced epics to measure progress and define workload for our team. In the first months, I was
             co-responsible for these tasks.</p>
         </div>
         <div class="gap-16">
           <h3>9. Designing</h3>
-          <p>Challenge: Create solutions ready to be used by our clients.</p>
-          <p>Solution and method: Every solution I designed was a separate project. In this case study, I am briefly
+          <p><strong>Challenge:</strong> Create solutions ready to be used by our clients.</p>
+          <p><strong>Solution and method:</strong> Every solution I designed was a separate project. In this case study,
+            I am briefly
             describing 3 of the 8 major projects I worked on.</p>
-          <p>(See more in Deliverables)</p>
+          <p>(See more in <a href="#designs">Deliverables</a>)</p>
         </div>
       </section>
       <section class="gap-24">
         <h2>Conclusion</h2>
-        <p>Final steps: The strategy, the roadmap, and the designs were delivered to CCC Club Team. The team is now in
+        <p><strong>Final steps:</strong> The strategy, the roadmap, and the designs were delivered to CCC Club Team. The
+          team is now in
           charge of all further design decisions, both long-term and low hanging fruit.</p>
-        <p>Areas for improvement: At one point, the UX team focused on mostly on designing, and not as much on the new
+        <p><strong>Areas for improvement:</strong> At one point, the UX team focused on mostly on designing, and not as
+          much on the new
           UX strategy. Because of that, we stirred away from the long-term vision.</p>
         <p>Looking back, I see we could also include business and data analysts earlier in the process, to set up
           long-term metrics that would help us validate our work. Even despite that, we reached our main goal at the
@@ -431,6 +463,17 @@
     });
     lightbox.init();
   </script>
+  <script>
+    var animation = bodymovin.loadAnimation({
+      container: document.getElementById('lottie'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'images/ccc/ccc-header-animation.json'
+    });
+    animation.setSpeed(0.3);
+  </script>
+
 </body>
 
 </html>
