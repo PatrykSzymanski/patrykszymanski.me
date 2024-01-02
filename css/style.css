@@ -75,6 +75,9 @@ button {
   letter-spacing: 0.01rem;
   word-break: keep-all;
 }
+figure-caption {
+  text-align: end;
+}
 .wrap {
   box-sizing: border-box;
   max-width: 1140px;
@@ -361,7 +364,6 @@ button {
   right: 0;
   background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
-
 @media screen and (min-width: 1140px) {
   p,
   a,
