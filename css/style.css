@@ -230,7 +230,7 @@ select {
 .euphire-image,
 .ccc-image {
   object-fit: contain;
-  width: 68%;
+  width: 66%;
   align-self: center;
 }
 
@@ -258,7 +258,7 @@ select {
 }
 
 .lowsugar-image {
-  margin-bottom: 24px;
+  margin-bottom: 6%;
   align-self: end;
   margin-right: -16px;
 }
@@ -282,7 +282,7 @@ select {
 }
 
 .dfw-image {
-  margin-bottom: 16px;
+  margin-bottom: 6%;
 }
 
 .card-dfw,
