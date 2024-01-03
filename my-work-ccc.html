@@ -30,7 +30,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.png" type="image/png">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
 </head>
 
@@ -60,9 +60,11 @@
             <h2 class="sub-header" style="color: #ffffff">2022</h2>
           </div>
         </div>
-        <div class="col-desk-12 col-tab-12 col-mob-4">
-          <div id="lottie"></div>
-        </div>
+        <figure class="col-desk-12 col-tab-12 col-mob-4">
+          <dotlottie-player class="" src="https://lottie.host/19564afb-46e1-4d74-b220-a490e845bbb9/Pz72P6pkpH.lottie"
+            background="transparent" speed="0.4" direction="1" mode="normal" loop
+            autoplay alt="CCC Club membership cards moving in line"></dotlottie-player>
+        </figure>
       </div>
       <hr>
   </header>
@@ -167,7 +169,8 @@
           <p>An in-depth UX strategy, outlining the current state and future development plans.</p>
           <figure class="gallery figure">
             <a href="images/ccc/CCC-strategy.webp" data-pswp-width="1920" data-pswp-height="1129">
-              <img class="project-img" src="images/ccc/CCC-strategy.webp" alt="Document describing the CCC UX strategy" />
+              <img class="project-img" src="images/ccc/CCC-strategy.webp"
+                alt="Document describing the CCC UX strategy" />
             </a>
             <figure-caption>UX strategy outline: bird’s eye view, short-term and long-term UX
               recommendations</figure-caption>
@@ -360,14 +363,16 @@
 
           <figure class="gallery figure">
             <a href="images/ccc/ccc-audit-process.webp" data-pswp-width="1920" data-pswp-height="1062">
-              <img class="project-img" src="images/ccc/ccc-audit-process.webp" alt="Miro board describing the audit process" />
+              <img class="project-img" src="images/ccc/ccc-audit-process.webp"
+                alt="Miro board describing the audit process" />
             </a>
             <figure-caption>UX Audit Miro board</figure-caption>
           </figure>
 
           <figure class="gallery figure">
             <a href="images/ccc/ccc-cognitive-walkthrough.webp" data-pswp-width="1920" data-pswp-height="1062">
-              <img class="project-img" src="images/ccc/ccc-cognitive-walkthrough.webp" alt="Cognitive Walktrough notes in a table" />
+              <img class="project-img" src="images/ccc/ccc-cognitive-walkthrough.webp"
+                alt="Cognitive Walktrough notes in a table" />
             </a>
             <figure-caption>Cognitive walkthrough notes</figure-caption>
           </figure>
