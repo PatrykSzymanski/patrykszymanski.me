@@ -114,6 +114,11 @@ figure-caption {
     background-color: #eaeaea;
     text-decoration: none;
   }
+  .card-no-hover:hover {
+    transform: translateY(0px);
+    cursor: not-allowed;
+    box-shadow: 6px 6px 0px #4b4b4b;
+  }
 }
 hr {
   border: 1px solid black;
@@ -188,6 +193,19 @@ select {
 }
 .card-ccc {
   background-color: #eedabf;
+}
+.card-beatstars {
+  background-color: #D2D4D9;
+}
+.sticker {
+  background-color: #000000;
+  color: white;
+  align-self: stretch;
+  flex-direction: column;
+  margin: 0 -16px;
+  padding: 16px 0;
+  text-align: center;
+  flex-shrink: 0;
 }
 .header-wrap-ccc {
   background-color: #000000;
@@ -289,6 +307,13 @@ button {
   align-self: flex-end;
   margin-right: -32px;
 }
+.beatstars-image {
+  align-self: flex-end;
+  margin-right: -32px;
+  margin-bottom: -32px;
+  overflow: hidden;
+  padding-top: 2%;
+}
 .iframe-container {
   position: relative;
   width: 100%;
@@ -354,7 +379,6 @@ button {
   width: 8%; /* Width of the gradient effect */
   z-index: 2;
 }
-
 #lottie::before {
   left: 0;
   background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
@@ -449,11 +473,6 @@ button {
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       text-decoration: none;
       cursor: pointer;
-    }
-    .card-no-hover:hover {
-      transform: translateY(0px);
-      cursor: not-allowed;
-      box-shadow: 6px 6px 0px #eee;
     }
   }
 }
