@@ -227,12 +227,13 @@ select {
   align-items: flex-start;
 }
 
-.euphire-image, .ccc-image {
+.euphire-image,
+.ccc-image {
   object-fit: contain;
   width: 68%;
   align-self: center;
 }
-  
+
 .card-ccc {
   background-color: #eedabf;
 }
