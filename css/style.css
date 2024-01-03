@@ -377,15 +377,6 @@ button {
     line-height: 100%;
     margin-top: 32px;
   }
-<<<<<<< HEAD
-=======
-  .ccc-image {
-    padding-top: 18%;
-  }
-  .euphire-image {
-    padding-top: 12%;
-  }
->>>>>>> parent of a9db8e0 (Add CCC in progress)
 }
 @media screen and (max-width: 620px) {
   .header-image-wrap {
