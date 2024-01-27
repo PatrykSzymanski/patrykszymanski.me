@@ -226,7 +226,7 @@ select {
   aspect-ratio: 1 / 1;
   justify-content: space-between;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .card-content {
@@ -418,7 +418,7 @@ button {
   left: 0;
   border: 2px solid black;
   box-shadow: 6px 6px 0px black;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .oval {
@@ -443,8 +443,7 @@ button {
 }
 
 .waysconf-image {
-  padding-left: 5%;
-  padding-right: 5%;
+  padding: 0 4% 0 4%;
 }
 
 .card-waysconf {
