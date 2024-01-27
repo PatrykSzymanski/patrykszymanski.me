@@ -244,6 +244,10 @@ select {
   background-color: #eedabf;
 }
 
+.card-waysconf {
+  background-color: #8589E3;
+}
+
 .card-beatstars {
   background-color: #D2D4D9;
 }
@@ -294,6 +298,12 @@ select {
 
 .dfw-image {
   margin-bottom: 6%;
+}
+
+.waysconf-image {
+align-self: flex-end;
+overflow: hidden;
+padding: 6% 0% 6% 0%;
 }
 
 .card-dfw,
