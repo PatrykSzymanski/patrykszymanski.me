@@ -487,7 +487,6 @@ button {
 #lottie {
   position: relative;
   overflow: hidden;
-  /* Other styles for your div */
 }
 
 #lottie::before,
