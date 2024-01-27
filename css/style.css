@@ -29,6 +29,11 @@ a {
   text-decoration: none;
 }
 
+.p-silent, .link-silent {
+  font-size: 0.92rem;
+  line-height: 112%;
+}
+
 h1,
 h2,
 h3,
@@ -221,6 +226,7 @@ select {
   aspect-ratio: 1 / 1;
   justify-content: space-between;
   text-decoration: none;
+  border-radius: 6px;
 }
 
 .card-content {
@@ -258,6 +264,10 @@ select {
   background-color: #000000;
 }
 
+.header-wrap-waysconf {
+  background-color: #94BDF9;
+}
+
 .lowsugar-image {
   margin-bottom: 6%;
   align-self: end;
@@ -288,7 +298,7 @@ select {
 
 .card-dfw,
 .header-wrap-dfw {
-  background-color: #85c7f8;
+  background-color: #F3A184;
 }
 
 .card-euphire,
@@ -308,6 +318,8 @@ select {
   background-color: #000000;
   padding: 6px 12px 6px 12px;
   color: #ffffff;
+  width: fit-content;
+  border-radius: 4px;
 }
 
 .mockup-img {
@@ -353,6 +365,7 @@ button {
   flex: none;
   align-self: stretch;
   flex-grow: 0;
+  border-radius: 4px;
 }
 
 .icon-link {
@@ -405,6 +418,7 @@ button {
   left: 0;
   border: 2px solid black;
   box-shadow: 6px 6px 0px black;
+  border-radius: 6px;
 }
 
 .oval {
@@ -426,6 +440,14 @@ button {
 .icon-list-item {
   display: flex;
   gap: 8px;
+}
+
+.waysconf-image {
+  padding: 0 4% 0 4%;
+}
+
+.card-waysconf {
+  background-color: #94BDF9;
 }
 
 #icon-list-red {
@@ -501,9 +523,8 @@ button {
     aspect-ratio: 1 / 1;
   }
 
-  .iframe-container {
+  .iframe-1-1-aspect-ratio {
     padding-bottom: 100%;
-    /* 16:9 aspect ratio */
   }
 
   .header-image {
