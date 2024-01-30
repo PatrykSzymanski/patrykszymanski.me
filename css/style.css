@@ -134,6 +134,7 @@ figure-caption {
   .link:hover {
     background-color: #eaeaea;
     text-decoration: none;
+    border-radius: 4px;
   }
 
   .card-no-hover:hover {
