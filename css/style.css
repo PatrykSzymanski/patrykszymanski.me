@@ -29,11 +29,6 @@ a {
   text-decoration: none;
 }
 
-.p-silent, .link-silent {
-  font-size: 0.92rem;
-  line-height: 150%;
-}
-
 h1,
 h2,
 h3,
@@ -173,6 +168,11 @@ select {
   color: #5227c5;
   width: fit-content;
   font-style: normal;
+}
+
+.p-silent, .link-silent {
+  font-size: 0.92rem;
+  line-height: 150%;
 }
 
 .margin-32 {
