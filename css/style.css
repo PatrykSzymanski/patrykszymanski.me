@@ -170,7 +170,8 @@ select {
   font-style: normal;
 }
 
-.p-silent, .link-silent {
+.p-silent,
+.link-silent {
   font-size: 0.92rem;
   line-height: 150%;
 }
@@ -250,7 +251,7 @@ select {
 }
 
 .card-beatstars {
-  background-color: #D2D4D9;
+  background-color: #E8E8E8;
 }
 
 
@@ -267,6 +268,10 @@ select {
 
 .header-wrap-ccc {
   background-color: #000000;
+}
+
+.header-wrap-beatstars {
+  background-color: #E8E8E8;
 }
 
 .header-wrap-waysconf {
@@ -302,9 +307,9 @@ select {
 }
 
 .waysconf-image {
-align-self: flex-end;
-overflow: hidden;
-padding: 6% 0% 6% 0%;
+  align-self: flex-end;
+  overflow: hidden;
+  padding: 6% 0% 6% 0%;
 }
 
 .card-dfw,
@@ -483,6 +488,10 @@ button {
 
 .icon-back-custom:hover {
   background-color: #2f2f2f;
+}
+
+.header-image, .header-image-wrap img {
+  border: 2px solid #000000;
 }
 
 #lottie {
