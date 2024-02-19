@@ -492,6 +492,7 @@ button {
 
 .header-image, .header-image-wrap img {
   border: 2px solid #000000;
+  border-radius: 4px;
 }
 
 #lottie {
