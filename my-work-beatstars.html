@@ -170,9 +170,10 @@
         </figure>
 
         <figure>
-          <picture class="figure">
+          <picture class="figure" id="imageToFullscreenPlain" class="image-container">
             <source media="(min-width: 620px)" srcset="images/beatstars/beatstars-image-favourites-1920px.webp">
-            <img class="project-img" id="imageToFullscreen" src="images/beatstars/beatstars-image-favourites-1200px.webp" alt="xxx">
+            <img class="project-img" id="imageToFullscreen"
+              src="images/beatstars/beatstars-image-favourites-1200px.webp" alt="xxx">
             <figure-caption>Caption needed</figure-caption>
           </picture>
         </figure>
@@ -180,7 +181,8 @@
         <figure>
           <picture class="figure" id="imageToFullscreen">
             <source media="(min-width: 620px)" srcset="images/beatstars/beatstars-image-mobile-1920px.webp">
-            <img class="project-img" id="imageToFullscreen" src="images/beatstars/beatstars-image-mobile-1200px.webp" alt="xxx">
+            <img class="project-img" id="imageToFullscreen" src="images/beatstars/beatstars-image-mobile-1200px.webp"
+              alt="xxx">
             <figure-caption>Caption needed</figure-caption>
           </picture>
         </figure>
@@ -431,26 +433,55 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      // Check if the API is available in the browser
-      if (!document.fullscreenEnabled) {
-        console.warn('Fullscreen API is not supported in this browser.');
-        return;
-      }
-
+    document.addEventListener('DOMContentLoaded', () => {
       const imageToFullscreen = document.getElementById('imageToFullscreen');
 
-      // Listen for a click event on the image
-      imageToFullscreen.addEventListener('click', function () {
+      imageToFullscreen.addEventListener('click', () => {
         if (!document.fullscreenElement) {
-          // Request fullscreen
-          imageToFullscreen.requestFullscreen().catch(err => {
+          enterFullscreen(imageToFullscreen);
+        }
+      });
+
+      function enterFullscreen(element) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen().then(() => {
+            // Create and display the close button after entering fullscreen
+            const closeButton = document.createElement('button');
+            closeButton.innerText = 'Close Fullscreen';
+            closeButton.classList.add('fullscreen-close-btn');
+            closeButton.onclick = exitFullscreen;
+
+            document.fullscreenElement.appendChild(closeButton);
+          }).catch(err => {
             alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
           });
-        } else {
-          // Exit fullscreen
+        }
+      }
+
+      function exitFullscreen() {
+        if (document.exitFullscreen) {
           document.exitFullscreen();
         }
+      }
+
+      // Listen for fullscreen change events to remove the close button when exiting fullscreen
+      document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+          const closeButton = document.querySelector('.fullscreen-close-btn');
+          if (closeButton) {
+            closeButton.remove();
+          }
+        }
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const imageContainer = document.getElementById('imageToFullscreenPlain');
+
+      imageContainer.addEventListener('click', function () {
+        this.classList.toggle('fullscreen-enabled');
       });
     });
   </script>

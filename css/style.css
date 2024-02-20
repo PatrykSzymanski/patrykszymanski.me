@@ -394,6 +394,41 @@ button {
   padding: 16px 0;
 }
 
+.fullscreen-close-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it's above other content */
+  padding: 10px;
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Base style for the image container */
+.image-container {
+  cursor: pointer;
+  /* Add any base styles you need */
+}
+
+/* Fullscreen simulation */
+.fullscreen-enabled {
+  position: fixed; /* Cover the full screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999; /* Ensure it's on top */
+  background-color: black; /* Optional: Adds a black background */
+}
+
+.fullscreen-enabled img {
+  width: 100%; /* Ensure the image spans the width of the screen */
+  height: 100%; /* Ensure the image spans the height of the screen */
+  object-fit: contain; /* Ensures the image maintains aspect ratio without cropping */
+}
+
 .cmb-image {
   align-self: flex-end;
   margin-right: -32px;
