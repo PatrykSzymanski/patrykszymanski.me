@@ -228,7 +228,7 @@ select {
   aspect-ratio: 1 / 1;
   justify-content: space-between;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .card-content {
@@ -250,11 +250,6 @@ select {
   background-color: #8589E3;
 }
 
-.card-beatstars {
-  background-color: #E8E8E8;
-}
-
-
 .sticker {
   background-color: #000000;
   color: white;
@@ -270,8 +265,8 @@ select {
   background-color: #000000;
 }
 
-.header-wrap-beatstars {
-  background-color: #E8E8E8;
+.header-wrap-beatstars, .card-beatstars {
+  background-color: #C8C7CA;
 }
 
 .header-wrap-waysconf {
@@ -399,12 +394,6 @@ button {
   padding: 16px 0;
 }
 
-.project-img {
-  border: 2px solid black;
-  display: flex;
-  box-shadow: 6px 6px 0px black;
-}
-
 .cmb-image {
   align-self: flex-end;
   margin-right: -32px;
@@ -434,7 +423,7 @@ button {
   left: 0;
   border: 2px solid black;
   box-shadow: 6px 6px 0px black;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 .oval {
@@ -492,6 +481,13 @@ button {
 
 .header-image, .header-image-wrap img {
   border: 2px solid #000000;
+  border-radius: 4px;
+}
+
+.project-img {
+  border: 2px solid black;
+  display: flex;
+  box-shadow: 6px 6px 0px black;
   border-radius: 4px;
 }
 
