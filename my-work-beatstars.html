@@ -26,8 +26,8 @@
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.png" type="image/png">
-
-
+  
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery.min.css" />
 
 </head>
 
@@ -161,8 +161,16 @@
           </p>
         </div>
 
+        <div id="lightgallery">
+          <!-- Elementy galerii -->
+          <a href="/images/beatstars/beatstars-image-main-1920px.webp">
+            <img src="/images/beatstars/beatstars-image-main-1920px.webp" alt="" />
+          </a>
+          <!-- Możesz dodać więcej obrazów tutaj -->
+        </div>
+
         <figure>
-          <picture class="figure" id="imageToFullscreen">
+          <picture class="figure">
             <source media="(min-width: 620px)" srcset="images/beatstars/beatstars-image-main-1920px.webp">
             <img class="project-img" src="images/beatstars/beatstars-image-main-1200px.webp" alt="xxx">
             <figure-caption>Caption needed</figure-caption>
@@ -170,7 +178,7 @@
         </figure>
 
         <figure>
-          <picture class="figure" id="imageToFullscreenPlain" class="image-container">
+          <picture class="figure">
             <source media="(min-width: 620px)" srcset="images/beatstars/beatstars-image-favourites-1920px.webp">
             <img class="project-img" id="imageToFullscreen"
               src="images/beatstars/beatstars-image-favourites-1200px.webp" alt="xxx">
@@ -179,7 +187,7 @@
         </figure>
 
         <figure>
-          <picture class="figure" id="imageToFullscreen">
+          <picture class="figure">
             <source media="(min-width: 620px)" srcset="images/beatstars/beatstars-image-mobile-1920px.webp">
             <img class="project-img" id="imageToFullscreen" src="images/beatstars/beatstars-image-mobile-1200px.webp"
               alt="xxx">
@@ -432,59 +440,15 @@
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const imageToFullscreen = document.getElementById('imageToFullscreen');
-
-      imageToFullscreen.addEventListener('click', () => {
-        if (!document.fullscreenElement) {
-          enterFullscreen(imageToFullscreen);
-        }
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery/plugins/zoom/lg-zoom.min.js"></script>
+  
+    <script>
+      lightGallery(document.getElementById('lightgallery'), {
+        plugins: [lgZoom],
+        speed: 500,
       });
-
-      function enterFullscreen(element) {
-        if (element.requestFullscreen) {
-          element.requestFullscreen().then(() => {
-            // Create and display the close button after entering fullscreen
-            const closeButton = document.createElement('button');
-            closeButton.innerText = 'Close Fullscreen';
-            closeButton.classList.add('fullscreen-close-btn');
-            closeButton.onclick = exitFullscreen;
-
-            document.fullscreenElement.appendChild(closeButton);
-          }).catch(err => {
-            alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-          });
-        }
-      }
-
-      function exitFullscreen() {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        }
-      }
-
-      // Listen for fullscreen change events to remove the close button when exiting fullscreen
-      document.addEventListener('fullscreenchange', () => {
-        if (!document.fullscreenElement) {
-          const closeButton = document.querySelector('.fullscreen-close-btn');
-          if (closeButton) {
-            closeButton.remove();
-          }
-        }
-      });
-    });
-  </script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const imageContainer = document.getElementById('imageToFullscreenPlain');
-
-      imageContainer.addEventListener('click', function () {
-        this.classList.toggle('fullscreen-enabled');
-      });
-    });
-  </script>
+    </script>
 
 </body>
 
