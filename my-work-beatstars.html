@@ -164,13 +164,46 @@
           </p>
         </div>
 
+        <figure>
+        <picture id="lightgallery">
+          <source media="(min-width:620px)" srcset="images/beatstars/beatstars-image-main-1920px.webp" />
+          <img class="project-img" src="images/beatstars/beatstars-image-main-1200px.webp" alt="images" />
+      </picture>
+    </figure>
+
+      <div id="lightgallery">
+        <a
+            data-src="images/beatstars/beatstars-image-main-1200px.webp"
+            data-sources='[{"srcset": "images/beatstars/beatstars-image-main-1920px.webp", "media":"(min-width:620px)"}]'
+        >
+            <img alt="thumb" src="images/beatstars/beatstars-image-main-1920px.webp" />
+        </a>
+    </div>
+
+        <figure id="lightgallery">
+          <a href="images/beatstars/beatstars-image-main-1920px.webp" 
+             data-src="images/beatstars/beatstars-image-main-1920px.webp"
+             data-srcset="images/beatstars/beatstars-image-main-1200px.webp 620, images/beatstars/beatstars-image-main-1920px.webp 1920"
+             data-sizes="(min-width: 620px) 620px, 100vw">
+              <img alt="xxx" src="images/beatstars/beatstars-image-main-1200px.webp" />
+          </a>
+        </figure>
+
+        <figure id="lightgallery" data-responsive="images/beatstars/beatstars-image-main-1200px.webp 620" data-src="images/beatstars/beatstars-image-main-1920px.webp">
+          <a href="images/beatstars/beatstars-image-main-1920px.webp">
+              <img alt="xxx" src="images/beatstars/beatstars-image-main-1920px.webp" />
+          </a>
+        </figure>
+      
+
         <figure class="figure" id="lightgallery">
           <a href="images/beatstars/beatstars-image-main-1920px.webp" data-src="images/beatstars/beatstars-image-main-1920px.webp">
             <picture>
               <source media="(min-width:620px)" srcset="images/beatstars/beatstars-image-main-1920px.webp">
-              <img src="images/beatstars/beatstars-image-main-1200px.webp">
+              <img class="project-img" src="images/beatstars/beatstars-image-main-1200px.webp">
             </picture>
           </a>
+          <figure-caption>Caption needed</figure-caption>
         </figure>
 
         <figure id="lightgallery">
