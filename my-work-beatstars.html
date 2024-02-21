@@ -164,13 +164,24 @@
           </p>
         </div>
 
-        <div id="lightgallery">
-          <!-- Elementy galerii -->
-          <a href="/images/beatstars/beatstars-image-main-1920px.webp">
-            <img src="/images/beatstars/beatstars-image-main-1920px.webp" alt="" />
+        <figure class="figure" id="lightgallery">
+          <a href="images/beatstars/beatstars-image-main-1920px.webp" data-src="images/beatstars/beatstars-image-main-1920px.webp">
+              <source media="(min-width:620px)" srcset="images/beatstars/beatstars-image-main-1920px.webp">
+              <img src="images/beatstars/beatstars-image-main-1200px.webp">
           </a>
-          <!-- Możesz dodać więcej obrazów tutaj -->
-        </div>
+        </figure>
+
+        <figure id="lightgallery">
+          <picture class="figure" id="lightgallery">
+              <source media="(min-width: 620px)" srcset="images/beatstars/beatstars-image-main-1920px.webp" type="image/webp">
+              <img class="project-img" src="images/beatstars/beatstars-image-main-1200px.webp" alt="xxx" 
+                   data-src="images/beatstars/beatstars-image-main-1200px.webp"
+                   data-sources='[
+                       {"srcset": "images/beatstars/beatstars-image-main-1920px.webp", "media": "(min-width: 620px)", "type":"image/webp"}
+                       ]'>
+          </picture>
+          <figcaption>Caption needed</figcaption>
+      </figure>
 
         <figure>
           <picture class="figure">
