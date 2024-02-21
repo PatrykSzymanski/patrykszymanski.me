@@ -27,7 +27,10 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.png" type="image/png">
   
-  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery.min.css" />
+  <link type="text/css" rel="stylesheet" href="node_modules/lightgallery/css/lightgallery.css" />
+
+  <!-- lightgallery plugins -->
+  <link type="text/css" rel="stylesheet" href="node_modules/lightgallery/css/lg-zoom.css" />
 
 </head>
 
@@ -440,15 +443,20 @@
     </div>
   </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery/plugins/zoom/lg-zoom.min.js"></script>
+  <script src="node_modules/lightgallery/lightgallery.min.js"></script>
+
+  <!-- lightgallery plugins -->
+  <script src="node_modules/lightgallery/plugins/zoom/lg-zoom.min.js"></script>
   
-    <script>
-      lightGallery(document.getElementById('lightgallery'), {
-        plugins: [lgZoom],
+  <script type="text/javascript">
+    lightGallery(document.getElementById('lightgallery'), {
+        plugins: [lgZoom,],
+        licenseKey: 'your_license_key',
         speed: 500,
-      });
-    </script>
+        download: false,
+        counter: false,
+    });
+</script>
 
 </body>
 
