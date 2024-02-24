@@ -27,12 +27,18 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.png" type="image/png">
 
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
+
+  <!-- lightgallery plugins -->
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css" />
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-fullscreen.min.css" />
+
 </head>
 
 <body>
-  <script src="js/photoswipe-lightbox.umd.min.js"></script>
-  <script src="js/photoswipe.umd.min.js"></script>
-  <link rel="stylesheet" href="css/photoswipe.css">
   <nav class="grid">
     <ul class="nav-items col-desk-12 col-tab-12 col-mob-4">
       <li><a class="link nav-item" href="./#my-work.html">My work</a></li>
@@ -55,11 +61,8 @@
             <h2 class="sub-header">2021</h2>
           </div>
         </div>
-        <figure class="gallery header-image-wrap col-desk-12 col-tab-12 col-mob-4">
-          <a href="images/lowsugar/lowsugar-header-image.webp" data-pswp-width="1920" data-pswp-height="905.6">
-            <img class="header-image" src="images/lowsugar/lowsugar-header-image.webp"
-              alt="LowSugar website desktop mockup" />
-          </a>
+        <figure class="header-image-wrap col-desk-12 col-tab-12 col-mob-4">
+          <img src="images/lowsugar/lowsugar-header-image.webp" alt="LowSugar website desktop mockup">
         </figure>
       </div>
     </div>
@@ -135,10 +138,10 @@
           <p>We went through all ideas and a feedback round. Working with all the collected ideas, we collectively
             rejected all the proposals that didn't fit the current budget and goals. Then, we prioritized ideas to be
             implemented first. We created the information architecture and established the website's scope.</p>
-          <figure class="gallery figure gap-8">
-            <a href="images/lowsugar/lowsugar-image-0.webp" data-pswp-width="1920" data-pswp-height="1025">
+          <figure class="figure">
+            <a class="lightgallery" href="images/lowsugar/lowsugar-image-0.webp">
               <img class="project-img" src="images/lowsugar/lowsugar-image-0.webp"
-                alt="Miro board screenshot with sticky notes created during the workshop" />
+                alt="Miro board screenshot with sticky notes created during the workshop">
             </a>
             <figure-caption>Part of the workshop's results</figure-caption>
           </figure>
@@ -151,10 +154,10 @@
             web design implementation (pages that adjust to any device) for mobile devices and tablets.
             You can view the wireframes in the Results section.
           </p>
-          <figure class="gallery figure gap-8">
-            <a href="images/lowsugar/lowsugar-image-1.webp" data-pswp-width="1920" data-pswp-height="1154">
+          <figure class="figure">
+            <a class="lightgallery" href="images/lowsugar/lowsugar-image-1.webp">
               <img class="project-img" src="images/lowsugar/lowsugar-image-1.webp"
-                alt="Figma screenshot with low-fidelity mockups" />
+                alt="Figma screenshot with low-fidelity mockups">
             </a>
             <figure-caption>Wireframing process</figure-caption>
           </figure>
@@ -180,14 +183,29 @@
       </p>
     </div>
   </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+
+  <!-- lightgallery plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
+
   <script type="text/javascript">
-    var lightbox = new PhotoSwipeLightbox({
-      gallery: '.gallery',
-      children: 'a',
-      // dynamic import is not supported in UMD version
-      pswpModule: PhotoSwipe
+    document.querySelectorAll('.lightgallery').forEach(element => {
+      lightGallery(element, {
+        plugins: [lgZoom, lgFullscreen],
+        speed: 500,
+        download: false,
+        counter: false,
+        infiniteZoom: true,
+        showZoomInOutIcons: true,
+        actualSize: false,
+        mobileSettings: {
+          showCloseIcon: true,
+        }
+      });
     });
-    lightbox.init();
   </script>
 </body>
 

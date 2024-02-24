@@ -30,12 +30,18 @@
 
   <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
+
+  <!-- lightgallery plugins -->
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css" />
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-fullscreen.min.css" />
+
 </head>
 
 <body>
-  <script src="js/photoswipe-lightbox.umd.min.js"></script>
-  <script src="js/photoswipe.umd.min.js"></script>
-  <link rel="stylesheet" href="css/photoswipe.css">
   <nav class="grid">
     <ul class="nav-items col-desk-12 col-tab-12 col-mob-4">
       <li><a class="link nav-item" href="./#my-work.html">My work</a></li>
@@ -122,12 +128,12 @@
           <p>During the kick-off workshop I facilitated, we aimed to understand the core of the CCC Club: user profiles,
             product data, user interactions, common issues, and user journeys. Apart from these new findings, we also
             worked with previous UX research insights.</p>
-          <figure class="gallery figure">
-            <a href="images/ccc/ccc-communication-diagram.webp" data-pswp-width="1920" data-pswp-height="1080">
+          <figure class="figure">
+            <a class="lightgallery" href="images/ccc/ccc-communication-diagram.webp">
               <img class="project-img" src="images/ccc/ccc-communication-diagram.webp"
-                alt="Diagram showing collaboration between departments within CCC" />
+                alt="Diagram showing collaboration between departments within CCC">
             </a>
-            <figure-caption>Collaboration diagram</figure-caption>
+            <figure-caption>Diagram showing collaboration between departments within CCC</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
@@ -166,10 +172,9 @@
           <h3>UX strategy
           </h3>
           <p>An in-depth UX strategy, outlining the current state and future development plans.</p>
-          <figure class="gallery figure">
-            <a href="images/ccc/CCC-strategy.webp" data-pswp-width="1920" data-pswp-height="1129">
-              <img class="project-img" src="images/ccc/CCC-strategy.webp"
-                alt="Document describing the CCC UX strategy" />
+          <figure class="figure">
+            <a class="lightgallery" href="images/ccc/CCC-strategy.webp">
+              <img class="project-img" src="images/ccc/CCC-strategy.webp" alt="Document describing the CCC UX strategy">
             </a>
             <figure-caption>UX strategy outline: bird’s eye view, short-term and long-term UX
               recommendations</figure-caption>
@@ -178,16 +183,16 @@
         <div class="gap-16">
           <h3>UX audit</h3>
           <p>A detailed UX audit, identifying over <strong>30 issues and proposed solutions</strong>.</p>
-          <figure class="gallery figure">
-            <a href="images/ccc/CCC-audit-zoom.webp" data-pswp-width="1920" data-pswp-height="952">
+          <figure class="figure">
+            <a class="lightgallery" href="images/ccc/CCC-audit-zoom.webp">
               <img class="project-img" src="images/ccc/CCC-audit-zoom.webp"
-                alt="Document describing the CCC UX audit in detail" />
+                alt="Document describing the CCC UX audit in detail">
             </a>
           </figure>
-          <figure class="gallery figure">
-            <a href="images/ccc/CCC-audit-overview.webp" data-pswp-width="1920" data-pswp-height="1062">
+          <figure class="figure">
+            <a class="lightgallery" href="images/ccc/CCC-audit-overview.webp">
               <img class="project-img" src="images/ccc/CCC-audit-overview.webp"
-                alt="Document showing the CCC UX audit overview" />
+                alt="Document showing the CCC UX audit overview">
             </a>
             <figure-caption>UX audit overview, featuring tags, screenshots, and priorities</figure-caption>
           </figure>
@@ -201,10 +206,10 @@
           <h3>Low hanging fruit
           </h3>
           <p>Identified over <strong>10 high-impact</strong>, low-effort initiatives using the Eisenhower Matrix.</p>
-          <figure class="gallery figure">
-            <a href="images/ccc/CCC-quick-wins.webp" data-pswp-width="1920" data-pswp-height="1168">
+          <figure class="figure">
+            <a class="lightgallery" href="images/ccc/CCC-quick-wins.webp">
               <img class="project-img" src="images/ccc/CCC-quick-wins.webp"
-                alt="Diagram showing sticky notes with quick wins" />
+                alt="Diagram showing sticky notes with quick wins">
             </a>
             <figure-caption>Eisenhower Matrix used for identifying low hanging fruit</figure-caption>
           </figure>
@@ -229,9 +234,10 @@
             both brands. The designs were later refined using the Rapid Iterative Testing and Evaluation (RITE) method
             with CCC Club members and prospects.</p>
         </div>
-        <figure class="gallery figure">
-          <a href="images/ccc/ccc-signup.webp" data-pswp-width="1920" data-pswp-height="1264">
-            <img class="project-img" src="images/ccc/ccc-signup.webp" alt="Sign-up mockups overview in Figma" />
+        <figure class="figure">
+          <a class="lightgallery" href="images/ccc/ccc-signup.webp">
+            <img class="project-img" src="images/ccc/ccc-signup.webp"
+              alt="Sign-up mockups overview in Figma">
           </a>
           <figure-caption>Sign-up mockups overview</figure-caption>
         </figure>
@@ -255,13 +261,13 @@
           <a class="link"
             href="https://www.figma.com/proto/79LUZKKyZBW6SBeYi9dlCp/CCC-Club-(PORTFOLIO)?page-id=0:1&type=design&node-id=1-10513&viewport=2446,3679,0.77&t=uZjidf68AzQcRor8-8&scaling=scale-down&starting-point-node-id=1:10513&hide-ui=1"
             target="_blank">Doesn't work? Open in Figma</a>
-          <figure class="gallery figure">
-            <a href="images/ccc/CCC-lp-overview.webp" data-pswp-width="1920" data-pswp-height="1181">
-              <img class="project-img" src="images/ccc/CCC-lp-overview.webp"
-                alt="CCC Club landing page mockups overview in Figma" />
-            </a>
-            <figure-caption>Landing page designs in Figma</figure-caption>
-          </figure>
+            <figure class="figure">
+              <a class="lightgallery" href="images/ccc/CCC-lp-overview.webp">
+                <img class="project-img" src="images/ccc/CCC-lp-overview.webp"
+                  alt="CCC Club landing page mockups overview in Figma">
+              </a>
+              <figure-caption>Landing page designs in Figma</figure-caption>
+            </figure>
         </div>
         <div class="gap-16">
           <h4>3. CCC Club dashboard</h4>
@@ -311,9 +317,10 @@
             The idea was to align our UX team goals with high-level goals of the organization. We used OST later in the
             process, during workshops (more on that later).
           </p>
-          <figure class="gallery figure">
-            <a href="images/ccc/CCC-method.webp" data-pswp-width="1920" data-pswp-height="1062">
-              <img class="project-img" src="images/ccc/CCC-method.webp" alt="Opportunity solution tree overview" />
+          <figure class="figure">
+            <a class="lightgallery" href="images/ccc/CCC-method.webp">
+              <img class="project-img" src="images/ccc/CCC-method.webp"
+                alt="Opportunity solution tree overview">
             </a>
             <figure-caption>Opportunity Solution Tree structure in Miro</figure-caption>
           </figure>
@@ -359,19 +366,17 @@
             <li><strong>Refinement</strong> with the User Experience Lead to make sure the project is headed in the
               right direction</li>
           </ol>
-
-          <figure class="gallery figure">
-            <a href="images/ccc/ccc-audit-process.webp" data-pswp-width="1920" data-pswp-height="1062">
+          <figure class="figure">
+            <a class="lightgallery" href="images/ccc/ccc-audit-process.webp">
               <img class="project-img" src="images/ccc/ccc-audit-process.webp"
-                alt="Miro board describing the audit process" />
+                alt="Miro board describing the audit process">
             </a>
             <figure-caption>UX Audit Miro board</figure-caption>
           </figure>
-
-          <figure class="gallery figure">
-            <a href="images/ccc/ccc-cognitive-walkthrough.webp" data-pswp-width="1920" data-pswp-height="1062">
+          <figure class="figure">
+            <a class="lightgallery" href="images/ccc/ccc-cognitive-walkthrough.webp">
               <img class="project-img" src="images/ccc/ccc-cognitive-walkthrough.webp"
-                alt="Cognitive Walktrough notes in a table" />
+                alt="Cognitive Walktrough notes in a table">
             </a>
             <figure-caption>Cognitive walkthrough notes</figure-caption>
           </figure>
@@ -386,11 +391,12 @@
             work that needs to
             be done. This was not limited to the UX Team only. For instance, I sat together with the Marketing
             Communication Team to improve the way we communicate with our clients.</p>
-          <figure class="gallery figure">
-            <a href="images/ccc/ccc-communication.webp" data-pswp-width="1920" data-pswp-height="1062">
-              <img class="project-img" src="images/ccc/ccc-communication.webp" alt="Miro board used during workshops" />
+          <figure class="figure">
+            <a class="lightgallery" href="images/ccc/ccc-communication.webp">
+              <img class="project-img" src="images/ccc/ccc-communication.webp"
+                alt="Miro board used during workshops">
             </a>
-            <figure-caption>Miro board used during workshops </figure-caption>
+            <figure-caption>Miro board used during workshops</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
@@ -460,15 +466,7 @@
       </p>
     </div>
   </footer>
-  <script type="text/javascript">
-    var lightbox = new PhotoSwipeLightbox({
-      gallery: '.gallery',
-      children: 'a',
-      // dynamic import is not supported in UMD version
-      pswpModule: PhotoSwipe
-    });
-    lightbox.init();
-  </script>
+
   <script>
     var animation = bodymovin.loadAnimation({
       container: document.getElementById('lottie'),
@@ -478,7 +476,30 @@
       path: 'images/ccc/ccc-header-animation.json'
     });
     animation.setSpeed(0.3);
+  </script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+
+  <!-- lightgallery plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
+
+  <script type="text/javascript">
+    document.querySelectorAll('.lightgallery').forEach(element => {
+      lightGallery(element, {
+        plugins: [lgZoom, lgFullscreen],
+        speed: 500,
+        download: false,
+        counter: false,
+        infiniteZoom: true,
+        showZoomInOutIcons: true,
+        actualSize: false,
+        mobileSettings: {
+          showCloseIcon: true,
+        }
+      });
+    });
   </script>
 
 </body>
