@@ -485,23 +485,23 @@
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
 
-  <script type="text/javascript">
-    document.querySelectorAll('.lightgallery').forEach(element => {
-      lightGallery(element, {
-        plugins: [lgZoom, lgFullscreen],
-        speed: 500,
-        download: false,
-        counter: false,
-        infiniteZoom: true,
-        showZoomInOutIcons: true,
-        actualSize: false,
-        mobileSettings: {
-          showCloseIcon: true,
-        }
+    <script type="text/javascript">
+      document.querySelectorAll('.lightgallery').forEach(element => {
+        lightGallery(element, {
+          plugins: [lgZoom, lgFullscreen],
+          speed: 500,
+          download: false,
+          counter: false,
+          infiniteZoom: true,
+          showZoomInOutIcons: true,
+          actualSize: false,
+          getCaptionFromTitleOrAlt: false,
+          mobileSettings: {
+            showCloseIcon: true,
+          }
+        });
       });
-    });
-  </script>
-
+    </script>
 </body>
 
 </html>
