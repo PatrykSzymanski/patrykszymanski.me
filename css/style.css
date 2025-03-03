@@ -77,7 +77,6 @@
   --link-hover-bg: var(--color-light-gray);
   --dark-link-color: var(--color-purple-light);
   --dark-link-hover-bg: var(--color-dark-gray);
-  --icon-dark: var(--color-light-gray);
 }
 
 /* 1.3 Dark mode variables */
@@ -372,10 +371,6 @@ footer {
   gap: 8px;
 }
 
-.dark-icon-link {
-  color: var(--color-white);
-}
-
 .icon-list {
   display: flex;
   flex-direction: column;
@@ -386,6 +381,10 @@ footer {
 .icon-list-item {
   display: flex;
   gap: 8px;
+}
+
+.icon-always-white {
+  color: var(--color-white);
 }
 
 .oval {
@@ -652,6 +651,10 @@ footer {
     border-radius: 4px;
   }
 
+  .icon-always-white:hover {
+    background-color: var(--dark-link-hover-bg);
+  }
+
   .card-no-hover:hover {
     transform: translateY(0px);
     cursor: not-allowed;
@@ -659,8 +662,8 @@ footer {
   }
 
   @media (prefers-color-scheme: dark) {
-    .icon-dark {
-      color: var(--icon-dark);
+    .icon-dark-mode {
+      color: var(--color-white);
     }
   }
 
