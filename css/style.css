@@ -531,7 +531,7 @@ footer {
 
 .header-image,
 .header-image-wrap img {
-  border: 1px solid var(--color-black);
+  border: var(--border);
   border-radius: 4px;
 }
 
@@ -629,6 +629,18 @@ footer {
 }
 
 /* 12.2 Hover effects for fine pointers */
+@media (prefers-color-scheme: dark) {
+  .icon-dark-mode {
+    color: var(--color-white);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .card-no-hover:hover {
+    box-shadow: 6px 6px 0px var(--color-medium-gray);
+ }
+}
+
 @media (pointer: fine) {
   a:hover {
     text-decoration: underline;
@@ -659,18 +671,6 @@ footer {
     transform: translateY(0px);
     cursor: not-allowed;
     box-shadow: 6px 6px 0px var(--color-medium-gray);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .icon-dark-mode {
-      color: var(--color-white);
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .card-no-hover:hover {
-      box-shadow: 6px 6px 0px var(--color-medium-gray);
-    }
   }
 }
 
