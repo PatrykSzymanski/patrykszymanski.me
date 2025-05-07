@@ -1,7 +1,7 @@
 // js/shapes.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Body } = Matter;
+    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Body, Query } = Matter;
     
     const container = document.getElementById('shapes-container');
     if (!container) return;
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wallThickness: 50,
         gravity: 0.5,
         shapeSize: 180,
-        triangleRadius: 112.5 // 180 * 100 / 160 for visual parity
+        triangleRadius: 120 // Set to exactly 120
     };
 
     const engine = Engine.create();
@@ -57,9 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'circle':
                 return Bodies.circle(x, y, config.shapeSize/2, commonProps);
             case 'rectangle':
-                return Bodies.rectangle(x, y, config.shapeSize, config.shapeSize, { ...commonProps, chamfer: { radius: 5 } });
+                return Bodies.rectangle(x, y, config.shapeSize, config.shapeSize, {
+                    ...commonProps,
+                    chamfer: { radius: 20, quality: 10 }
+                });
             case 'triangle':
-                return Bodies.polygon(x, y, 3, config.triangleRadius, commonProps);
+                return Bodies.polygon(x, y, 3, config.triangleRadius, {
+                    ...commonProps,
+                    chamfer: { radius: 15, quality: 10 }
+                });
             default:
                 return Bodies.rectangle(x, y, config.shapeSize, config.shapeSize, { ...commonProps, render: { fillStyle: '#dddddd' } });
         }
@@ -92,6 +98,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         Composite.add(engine.world, mouseConstraint);
         render.mouse = mouse;
+
+        // Add mouse move event listener to handle cursor changes
+        render.canvas.addEventListener('mousemove', (event) => {
+            const mousePosition = { x: event.offsetX, y: event.offsetY };
+            const bodies = Composite.allBodies(engine.world);
+            const hoveredBody = Query.point(bodies, mousePosition);
+            
+            if (hoveredBody.length > 0 && !hoveredBody[0].isStatic) {
+                render.canvas.style.cursor = 'pointer';
+            } else {
+                render.canvas.style.cursor = 'default';
+            }
+        });
     }
 
     function handleResize() {
