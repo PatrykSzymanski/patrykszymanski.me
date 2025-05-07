@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/css/fonts.css">
   <link rel="stylesheet" href="/css/grid.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/shapes.css">
 
   <meta name="title" content="Patryk Szymański | UX/Product Designer Portfolio">
   <meta name="description" content="UX/Product Designer based in Kraków, Poland. See my portfolio and case studies">
@@ -26,6 +27,8 @@
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.png" type="image/png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 
 </head>
 
@@ -153,6 +156,14 @@
       </div>
     </section>
   </main>
+
+  <section class="grid ai-shapes-playground" aria-hidden="true">
+    <div class="col-desk-12 col-tab-12 col-mob-4">
+      <div id="shapes-container" class="shapes-canvas-container">
+      </div>
+    </div>
+  </section>
+
   <hr>
   <footer class="grid">
     <div class="col-desk-12 col-tab-12 col-mob-4">
@@ -168,4 +179,5 @@
   </div>
 </body>
 
+<script src="js/shapes.js"></script>
 </html>
