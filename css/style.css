@@ -20,7 +20,6 @@
    9. Image positioning
    10. iFrame components
    11. Lottie animation
-   13. Shapes playground
    12. Responsive styles
       12.1 Reduced motion
       12.2 Hover effects for fine pointers
@@ -532,7 +531,7 @@ footer {
 
 .header-image,
 .header-image-wrap img {
-  border: 1px solid var(--color-black);
+  border: var(--border);
   border-radius: 4px;
 }
 
@@ -609,55 +608,6 @@ footer {
   }
 }
 
-/* In your style.css or within <style> tags in your HTML <head> */
-body.matter-js-active { /* We'll add this class via JS */
-  margin: 0;
-  overflow: hidden; /* Hide scrollbars on body WHEN active */
-}
-
-/* ==========================================================================
-   12. Shapes playground
-   ========================================================================== */
-
-/* ==========================================================================
-   12. Shapes playground
-   ========================================================================== */
-
-/* Jeśli dodałeś #shapes-playground-section jako wrapper w HTML */
-#shapes-playground-section {
-  padding-top: 32px;    /* Odstęp nad sekcją */
-  padding-bottom: 32px; /* Odstęp pod sekcją */
-  /* Możesz dodać tło dla całej tej sekcji, jeśli chcesz */
-  /* background-color: #fafafa; */
-}
-
-#matter-container {
-  width: 100%;                /* Szerokość na 100% rodzica (w tym przypadku col-desk-12) */
-  max-width: 1140px;          /* Maksymalna szerokość, aby pasowała do .wrap */
-  height: 600px;              /* NOWA WYSOKOŚĆ: 600px */
-  margin: 0 auto;             /* Wyśrodkowanie kontenera w jego kolumnie gridu */
-  position: relative;         /* Ważne dla pozycjonowania canvasu wewnątrz */
-  background-color: #ffffff;  /* Tło dla kontenera, możesz zmienić */
-  border: 1px solid #e0e0e0;  /* Delikatna ramka */
-  border-radius: 4px;         /* Zaokrąglenie rogów, pasujące do innych elementów */
-  opacity: 0;                 /* Początkowo ukryty */
-  transition: opacity 0.7s ease-in-out; /* Płynne pojawianie się */
-  overflow: hidden;           /* Zapobiega wizualnemu "wystawaniu" kształtów */
-}
-
-#matter-container.active {
-  opacity: 1;
-}
-
-#matter-container canvas {
-  display: block;             /* Usuwa ewentualny mały margines pod canvasem */
-  /* background: transparent; jest ustawiane w opcjach renderera Matter.js,
-     więc tło #matter-container (jeśli ustawione) będzie widoczne pod kształtami. */
-}
-
-
-  
-
 /* ==========================================================================
    12. Responsive styles
    ========================================================================== */
@@ -679,6 +629,18 @@ body.matter-js-active { /* We'll add this class via JS */
 }
 
 /* 12.2 Hover effects for fine pointers */
+@media (prefers-color-scheme: dark) {
+  .icon-dark-mode {
+    color: var(--color-white);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .card-no-hover:hover {
+    box-shadow: 6px 6px 0px var(--color-medium-gray);
+ }
+}
+
 @media (pointer: fine) {
   a:hover {
     text-decoration: underline;
@@ -709,18 +671,6 @@ body.matter-js-active { /* We'll add this class via JS */
     transform: translateY(0px);
     cursor: not-allowed;
     box-shadow: 6px 6px 0px var(--color-medium-gray);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .icon-dark-mode {
-      color: var(--color-white);
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .card-no-hover:hover {
-      box-shadow: 6px 6px 0px var(--color-medium-gray);
-    }
   }
 }
 
