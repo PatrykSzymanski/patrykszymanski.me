@@ -59,12 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'rectangle':
                 return Bodies.rectangle(x, y, config.shapeSize, config.shapeSize, {
                     ...commonProps,
-                    chamfer: { radius: 20, quality: 10 }
+                    chamfer: { radius: 16, quality: 10 }
                 });
             case 'triangle':
                 return Bodies.polygon(x, y, 3, config.triangleRadius, {
                     ...commonProps,
-                    chamfer: { radius: 15, quality: 10 }
+                    chamfer: { radius: 16, quality: 10 }
                 });
             default:
                 return Bodies.rectangle(x, y, config.shapeSize, config.shapeSize, { ...commonProps, render: { fillStyle: '#dddddd' } });
@@ -73,9 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initializeShapes() {
         const shapes = [
-            { type: 'rectangle', color: '#000000' },
-            { type: 'circle', color: '#000000' },
-            { type: 'triangle', color: '#000000' }
+            { type: 'rectangle', color: window.matchMedia('(prefers-color-scheme: dark)').matches ? '#EAEAEA' : '#000000' },
+            { type: 'circle', color: window.matchMedia('(prefers-color-scheme: dark)').matches ? '#EAEAEA' : '#000000' },
+            { type: 'triangle', color: window.matchMedia('(prefers-color-scheme: dark)').matches ? '#EAEAEA' : '#000000' }
         ];
         const matterShapes = [];
 
@@ -167,6 +167,16 @@ document.addEventListener('DOMContentLoaded', () => {
     Render.run(render);
     Runner.run(Runner.create(), engine);
     window.addEventListener('resize', handleResize);
+
+    // Add color scheme change listener
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        const bodies = Composite.allBodies(engine.world);
+        bodies.forEach(body => {
+            if (!body.isStatic) { // Skip walls
+                body.render.fillStyle = e.matches ? '#EAEAEA' : '#000000';
+            }
+        });
+    });
 
     // Add the check to the engine's update loop
     Matter.Events.on(engine, 'beforeUpdate', checkAndResetShapes);
