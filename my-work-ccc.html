@@ -64,11 +64,9 @@
             <h2 class="sub-header" style="color: #ffffff">2022</h2>
           </div>
         </div>
-        <figure class="col-desk-12 col-tab-12 col-mob-4">
-          <dotlottie-player class="" id="lottie"
-            src="https://lottie.host/19564afb-46e1-4d74-b220-a490e845bbb9/Pz72P6pkpH.lottie" background="transparent"
-            speed="0.4" direction="1" mode="normal" loop autoplay
-            alt="CCC Club membership cards moving in line"></dotlottie-player>
+        <figure class="lottie-container col-desk-12 col-tab-12 col-mob-4">
+          <dotlottie-player id="lottie" src="images/ccc/animation.lottie" background="transparent" speed="0.4"
+            direction="1" mode="normal" loop autoplay alt="CCC Club membership cards moving in line"></dotlottie-player>
         </figure>
       </div>
       <hr>
@@ -464,17 +462,6 @@
     </div>
   </footer>
 
-  <script>
-    var animation = bodymovin.loadAnimation({
-      container: document.getElementById('lottie'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'images/ccc/ccc-header-animation.json'
-    });
-    animation.setSpeed(0.3);
-  </script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
 
   <!-- lightgallery plugins -->
@@ -497,35 +484,6 @@
           showCloseIcon: true,
         }
       });
-    });
-  </script>
-  <script>
-    window.addEventListener('DOMContentLoaded', function () {
-      const lottie = document.getElementById('lottie');
-      if (!lottie) return;
-
-      function stretchLottie() {
-        const shadow = lottie.shadowRoot;
-        if (!shadow) return;
-
-        const svg = shadow.querySelector('svg');
-        if (!svg) return;
-
-        svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
-        svg.style.height = '100%';
-        svg.style.width = 'auto';
-        svg.style.display = 'block';
-        svg.style.objectFit = 'cover';
-
-      }
-
-      const observer = new MutationObserver(() => {
-        stretchLottie();
-      });
-
-      observer.observe(lottie, { subtree: true, childList: true });
-
-      setTimeout(stretchLottie, 500);
     });
   </script>
 </body>

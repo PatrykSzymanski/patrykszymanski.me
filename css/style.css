@@ -594,8 +594,8 @@ footer {
   overflow: hidden;
   height: 100%;
   width: auto;
-  min-width: 100%;
   display: block;
+  object-fit: cover
 }
 
 #lottie::before,
@@ -605,7 +605,6 @@ footer {
   top: 0;
   bottom: 0;
   width: 8%;
-  /* Width of the gradient effect */
   z-index: 2;
 }
 
@@ -715,8 +714,22 @@ footer {
 
 /* 12.4 Screen max-width 620px */
 @media screen and (max-width: 620px) {
-  #lottie {
+  .lottie-container {
     height: 400px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #lottie {
+    height: 100%;
+    width: 100%;
+    min-width: 300%;
+    display: block;
+    object-fit: cover;
   }
 
   .display-heading {
