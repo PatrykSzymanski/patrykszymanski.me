@@ -34,7 +34,6 @@
   <link type="text/css" rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
 
-  <!-- lightgallery plugins -->
   <link type="text/css" rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css" />
   <link type="text/css" rel="stylesheet"
@@ -237,8 +236,7 @@
         </div>
         <figure class="figure">
           <a class="lightgallery" href="images/ccc/ccc-signup.webp">
-            <img class="project-img" src="images/ccc/ccc-signup.webp"
-              alt="Sign-up mockups overview in Figma">
+            <img class="project-img" src="images/ccc/ccc-signup.webp" alt="Sign-up mockups overview in Figma">
           </a>
           <figure-caption>Sign-up mockups overview</figure-caption>
         </figure>
@@ -262,13 +260,13 @@
           <a class="link"
             href="https://www.figma.com/proto/79LUZKKyZBW6SBeYi9dlCp/CCC-Club-(PORTFOLIO)?page-id=0:1&type=design&node-id=1-10513&viewport=2446,3679,0.77&t=uZjidf68AzQcRor8-8&scaling=scale-down&starting-point-node-id=1:10513&hide-ui=1"
             target="_blank">Doesn't work? Open in Figma</a>
-            <figure class="figure">
-              <a class="lightgallery" href="images/ccc/CCC-lp-overview.webp">
-                <img class="project-img" src="images/ccc/CCC-lp-overview.webp"
-                  alt="CCC Club landing page mockups overview in Figma">
-              </a>
-              <figure-caption>Landing page designs in Figma</figure-caption>
-            </figure>
+          <figure class="figure">
+            <a class="lightgallery" href="images/ccc/CCC-lp-overview.webp">
+              <img class="project-img" src="images/ccc/CCC-lp-overview.webp"
+                alt="CCC Club landing page mockups overview in Figma">
+            </a>
+            <figure-caption>Landing page designs in Figma</figure-caption>
+          </figure>
         </div>
         <div class="gap-16">
           <h4>3. CCC Club dashboard</h4>
@@ -320,8 +318,7 @@
           </p>
           <figure class="figure">
             <a class="lightgallery" href="images/ccc/CCC-method.webp">
-              <img class="project-img" src="images/ccc/CCC-method.webp"
-                alt="Opportunity solution tree overview">
+              <img class="project-img" src="images/ccc/CCC-method.webp" alt="Opportunity solution tree overview">
             </a>
             <figure-caption>Opportunity Solution Tree structure in Miro</figure-caption>
           </figure>
@@ -394,8 +391,7 @@
             Communication Team to improve the way we communicate with our clients.</p>
           <figure class="figure">
             <a class="lightgallery" href="images/ccc/ccc-communication.webp">
-              <img class="project-img" src="images/ccc/ccc-communication.webp"
-                alt="Miro board used during workshops">
+              <img class="project-img" src="images/ccc/ccc-communication.webp" alt="Miro board used during workshops">
             </a>
             <figure-caption>Miro board used during workshops</figure-caption>
           </figure>
@@ -486,23 +482,52 @@
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
 
-    <script type="text/javascript">
-      document.querySelectorAll('.lightgallery').forEach(element => {
-        lightGallery(element, {
-          plugins: [lgZoom, lgFullscreen],
-          speed: 500,
-          download: false,
-          counter: false,
-          infiniteZoom: true,
-          showZoomInOutIcons: true,
-          actualSize: false,
-          getCaptionFromTitleOrAlt: false,
-          mobileSettings: {
-            showCloseIcon: true,
-          }
-        });
+  <script type="text/javascript">
+    document.querySelectorAll('.lightgallery').forEach(element => {
+      lightGallery(element, {
+        plugins: [lgZoom, lgFullscreen],
+        speed: 500,
+        download: false,
+        counter: false,
+        infiniteZoom: true,
+        showZoomInOutIcons: true,
+        actualSize: false,
+        getCaptionFromTitleOrAlt: false,
+        mobileSettings: {
+          showCloseIcon: true,
+        }
       });
-    </script>
+    });
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const lottie = document.getElementById('lottie');
+      if (!lottie) return;
+
+      function stretchLottie() {
+        const shadow = lottie.shadowRoot;
+        if (!shadow) return;
+
+        const svg = shadow.querySelector('svg');
+        if (!svg) return;
+
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+        svg.style.height = '100%';
+        svg.style.width = 'auto';
+        svg.style.display = 'block';
+        svg.style.objectFit = 'cover';
+
+      }
+
+      const observer = new MutationObserver(() => {
+        stretchLottie();
+      });
+
+      observer.observe(lottie, { subtree: true, childList: true });
+
+      setTimeout(stretchLottie, 500);
+    });
+  </script>
 </body>
 
 </html>
