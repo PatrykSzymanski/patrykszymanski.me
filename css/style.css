@@ -25,6 +25,7 @@
       12.2 Hover effects for fine pointers
       12.3 Screen min-width 1140px
       12.4 Screen max-width 620px
+*/
 
 /* ==========================================================================
    1. Global settings & resets
@@ -44,7 +45,6 @@
 
   /* Color system */
   --color-background-dark: #1f1f1f;
-
   --color-black: #000000;
   --color-white: #ffffff;
   --color-light-gray: #eaeaea;
@@ -77,6 +77,7 @@
   --link-hover-bg: var(--color-light-gray);
   --dark-link-color: var(--color-purple-light);
   --dark-link-hover-bg: var(--color-dark-gray);
+  --color-shape: var(--color-black);
 }
 
 /* 1.3 Dark mode variables */
@@ -85,6 +86,7 @@
     --box-shadow: 6px 6px 0px var(--color-light-gray);
     --link-color: var(--dark-link-color);
     --link-hover-bg: var(--dark-link-hover-bg);
+    --color-shape: var(--color-light-gray);
   }
 }
 
@@ -150,7 +152,6 @@ a:not([class]) {
    3. Typography
    ========================================================================== */
 
-/* 3.1 Headings and text classes */
 h1,
 h2,
 h3,
@@ -200,7 +201,6 @@ h4 {
    4. Layout utilities
    ========================================================================== */
 
-/* 4.1 Containers, gap and margin utilities */
 .wrap {
   max-width: 1140px;
   margin: 0 auto;
@@ -215,25 +215,11 @@ h4 {
   flex-direction: column;
 }
 
-.gap-48 {
-  gap: 48px;
-}
-
-.gap-32 {
-  gap: 32px;
-}
-
-.gap-24 {
-  gap: 24px;
-}
-
-.gap-16 {
-  gap: 16px;
-}
-
-.gap-8 {
-  gap: 8px;
-}
+.gap-48 { gap: 48px; }
+.gap-32 { gap: 32px; }
+.gap-24 { gap: 24px; }
+.gap-16 { gap: 16px; }
+.gap-8  { gap: 8px; }
 
 .margin-32 {
   margin-top: 32px;
@@ -248,7 +234,6 @@ h4 {
    5. Components
    ========================================================================== */
 
-/* 5.1 HR, images, figures, buttons, cards, etc. */
 hr {
   border: none;
   border-top: 0.5px solid var(--color-medium-gray);
@@ -327,9 +312,14 @@ button {
   border-radius: 4px;
 }
 
-.sticker {
+.sticker,
+.in-progress {
   background-color: var(--color-black);
   color: var(--color-white);
+  border-radius: 4px;
+}
+
+.sticker {
   align-self: stretch;
   flex-direction: column;
   margin: 0 -16px;
@@ -339,11 +329,8 @@ button {
 }
 
 .in-progress {
-  background-color: var(--color-black);
   padding: 6px 12px;
-  color: var(--color-white);
   width: fit-content;
-  border-radius: 4px;
 }
 
 /* ==========================================================================
@@ -419,85 +406,23 @@ footer {
 /* ==========================================================================
    8. Color variations
    ========================================================================== */
-.card-ccc {
-  background-color: var(--color-ccc);
-}
-
-.card-ecommerce-app {
-  background-color: var(--color-off-price-app);
-}
-
-.header-wrap-waysconf,
-.card-waysconf {
-  background-color: var(--color-waysconf);
-}
+.card-ccc { background-color: var(--color-ccc); }
+.card-ecommerce-app { background-color: var(--color-off-price-app); }
+.header-wrap-waysconf, .card-waysconf { background-color: var(--color-waysconf); }
+.header-wrap-ccc { background-color: var(--color-black); }
+.header-wrap-beatstars, .card-beatstars { background-color: var(--color-beatstars); }
+.card-cmb, .header-wrap-cmb, .header-wrap-about-me { background: var(--color-cmb-about-me); }
+.card-lowsugar, .header-wrap-lowsugar { background: var(--color-lowsugar); }
+.card-dfw, .header-wrap-dfw { background-color: var(--color-dfw); }
+.card-euphire, .header-wrap-euphire { background-color: var(--color-euphire); }
 
 @media (prefers-color-scheme: dark) {
-  .header-wrap-waysconf {
-    background: var(--color-dark-waysconf);
-  }
-}
-
-.header-wrap-ccc {
-  background-color: var(--color-black);
-}
-
-.header-wrap-beatstars,
-.card-beatstars {
-  background-color: var(--color-beatstars);
-}
-
-@media (prefers-color-scheme: dark) {
-  .header-wrap-beatstars {
-    background: var(--color-black);
-  }
-}
-
-.card-cmb,
-.header-wrap-cmb,
-.header-wrap-about-me {
-  background: var(--color-cmb-about-me);
-}
-
-@media (prefers-color-scheme: dark) {
-
-  .header-wrap-about-me,
-  .header-wrap-cmb {
-    background: var(--color-dark-cmb-about-me);
-  }
-}
-
-.card-lowsugar,
-.header-wrap-lowsugar {
-  background: var(--color-lowsugar);
-}
-
-@media (prefers-color-scheme: dark) {
-  .header-wrap-lowsugar {
-    background: var(--color-dark-lowsugar);
-  }
-}
-
-.card-dfw,
-.header-wrap-dfw {
-  background-color: var(--color-dfw);
-}
-
-@media (prefers-color-scheme: dark) {
-  .header-wrap-dfw {
-    background: var(--color-dark-dfw);
-  }
-}
-
-.card-euphire,
-.header-wrap-euphire {
-  background-color: var(--color-euphire);
-}
-
-@media (prefers-color-scheme: dark) {
-  .header-wrap-euphire {
-    background: var(--color-dark-euphire);
-  }
+  .header-wrap-waysconf { background: var(--color-dark-waysconf); }
+  .header-wrap-beatstars { background: var(--color-black); }
+  .header-wrap-about-me, .header-wrap-cmb { background: var(--color-dark-cmb-about-me); }
+  .header-wrap-lowsugar { background: var(--color-dark-lowsugar); }
+  .header-wrap-dfw { background: var(--color-dark-dfw); }
+  .header-wrap-euphire { background: var(--color-dark-euphire); }
 }
 
 /* ==========================================================================
@@ -571,8 +496,7 @@ footer {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%;
-  /* 16:9 aspect ratio */
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
 }
 
 .iframe-content {
@@ -595,7 +519,7 @@ footer {
   height: 100%;
   width: auto;
   display: block;
-  object-fit: cover
+  object-fit: cover;
 }
 
 #lottie::before,
@@ -622,7 +546,6 @@ footer {
   #lottie::before {
     background: linear-gradient(to right, var(--color-background-dark), rgba(31, 31, 31, 0));
   }
-
   #lottie::after {
     background: linear-gradient(to left, var(--color-background-dark), rgba(31, 31, 31, 0));
   }
@@ -634,13 +557,8 @@ footer {
 
 /* 12.1 Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
+  html:focus-within { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -650,22 +568,12 @@ footer {
 
 /* 12.2 Hover effects for fine pointers */
 @media (prefers-color-scheme: dark) {
-  .icon-dark-mode {
-    color: var(--color-white);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .card-no-hover:hover {
-    box-shadow: 6px 6px 0px var(--color-medium-gray);
-  }
+  .icon-dark-mode { color: var(--color-white); }
+  .card-no-hover:hover { box-shadow: 6px 6px 0px var(--color-medium-gray); }
 }
 
 @media (pointer: fine) {
-  a:hover {
-    text-decoration: underline;
-  }
-
+  a:hover { text-decoration: underline; }
   .btn:hover,
   .card:hover,
   .project-img:hover,
@@ -676,17 +584,14 @@ footer {
     text-decoration: none;
     cursor: pointer;
   }
-
   .link:hover {
     background-color: var(--link-hover-bg);
     text-decoration: none;
     border-radius: 4px;
   }
-
   .icon-always-white:hover {
     background-color: var(--dark-link-hover-bg);
   }
-
   .card-no-hover:hover {
     transform: translateY(0px);
     cursor: not-allowed;
@@ -696,15 +601,10 @@ footer {
 
 /* 12.3 Screen min-width 1140px */
 @media screen and (min-width: 1140px) {
-
-  p,
-  a,
-  button,
-  li {
+  p, a, button, li {
     font-size: 20px;
     line-height: 150%;
   }
-
   .display-heading {
     font-size: 5rem;
     line-height: 100%;
@@ -723,7 +623,6 @@ footer {
     align-items: center;
     justify-content: center;
   }
-
   #lottie {
     height: 100%;
     width: 100%;
@@ -731,45 +630,17 @@ footer {
     display: block;
     object-fit: cover;
   }
-
-  .display-heading {
-    line-height: 104%;
-  }
-
-  .header-image-wrap {
-    aspect-ratio: 1 / 1;
-  }
-
-  .iframe-1-1-aspect-ratio {
-    padding-bottom: 100%;
-  }
-
+  .display-heading { line-height: 104%; }
+  .header-image-wrap { aspect-ratio: 1 / 1; }
+  .iframe-1-1-aspect-ratio { padding-bottom: 100%; }
   .header-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
-  .nav-items {
-    gap: 8px;
-  }
-
-  h1 {
-    font-family: var(--display-font);
-    font-size: 1.9528rem;
-  }
-
-  h2 {
-    font-size: 1.5624rem;
-  }
-
-  h3 {
-    font-size: 1.2504rem;
-  }
-
-  h4,
-  .card-tag,
-  .sub-header {
-    font-size: 1.1rem;
-  }
+  .nav-items { gap: 8px; }
+  h1 { font-family: var(--display-font); font-size: 1.9528rem; }
+  h2 { font-size: 1.5624rem; }
+  h3 { font-size: 1.2504rem; }
+  h4, .card-tag, .sub-header { font-size: 1.1rem; }
 }
