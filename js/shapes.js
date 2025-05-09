@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const engine = Engine.create();
-    engine.world.gravity.y = 0.3;
+    engine.world.gravity.y = 0.4;
 
     const render = Render.create({
         element: container,
