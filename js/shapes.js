@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const engine = Engine.create();
-    engine.world.gravity.y = 0.5;
+    engine.world.gravity.y = 0.3;
 
     const render = Render.create({
         element: container,
@@ -78,6 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateDynamicBodiesCache() {
         dynamicBodies = Composite.allBodies(engine.world).filter(body => !body.isStatic);
+    }
+
+    let shapesInitialized = false;
+    function initializeShapesOnce() {
+        if (!shapesInitialized) {
+            initializeShapes();
+            shapesInitialized = true;
+        }
     }
 
     function initializeShapes() {
@@ -161,7 +169,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     boundaries = createBoundaries(config.width, config.height);
     Composite.add(engine.world, boundaries);
-    initializeShapes();
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    initializeShapesOnce();
+                    obs.disconnect();
+                }
+            });
+        }, { threshold: 0.1 });
+        observer.observe(container);
+    } else {
+        initializeShapesOnce();
+    }
+
     setupMouseControl();
 
     Render.run(render);
