@@ -1,0 +1,796 @@
+/*
+   Table of contents:
+   1. Global settings & resets
+      1.1 Box sizing
+      1.2 :root CSS variables
+      1.3 Dark mode variables
+      1.4 Reset styles
+   2. Base styles
+      2.1 Body, buttons & media queries for dark mode
+      2.2 Focus and link styles
+   3. Typography
+      3.1 Headings and text classes
+   4. Layout utilities
+      4.1 Containers, gap and margin utilities
+   5. Components
+      5.1 HR, images, figures, buttons, cards, etc.
+   6. Navigation & footer
+   7. Icons and links
+   8. Color variations
+   9. Image positioning
+   10. iFrame components
+   11. Lottie animation
+   12. Responsive styles
+      12.1 Reduced motion
+      12.2 Hover effects for fine pointers
+      12.3 Screen min-width 1140px
+      12.4 Screen max-width 620px
+*/
+
+/* ==========================================================================
+   1. Global settings & resets
+   ========================================================================== */
+
+/* 1.1 Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 1.2 :root CSS variables */
+:root {
+  /* Font sizes */
+  font-size: 18px;
+
+  /* Color system */
+  --color-background-dark: #1f1f1f;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-light-gray: #eaeaea;
+  --color-medium-gray: #888888;
+  --color-dark-gray: #343434;
+  --color-purple: #5227c5;
+  --color-purple-light: #c5bafa;
+
+  /* Project colors */
+  --color-cmb-about-me: #c5bafa;
+  --color-dark-cmb-about-me: #16075F;
+  --color-lowsugar: #76BC7B;
+  --color-dark-lowsugar: #214524;
+  --color-ccc: #eedabf;
+  --color-off-price-app: #ED8F87;
+  --color-waysconf: #94BDF9;
+  --color-dark-waysconf: #063A60;
+  --color-beatstars: #C8C7CA;
+  --color-dfw: #F3A184;
+  --color-dark-dfw: #653726;
+  --color-euphire: #ffd639;
+  --color-dark-euphire: #665100;
+
+  /* Component variables */
+  --primary-font: "Lato", sans-serif;
+  --display-font: "Playfair Display", serif;
+  --box-shadow: 6px 6px 0px var(--color-black);
+  --border: 2px solid var(--color-black);
+  --link-color: var(--color-purple);
+  --link-hover-bg: var(--color-light-gray);
+  --dark-link-color: var(--color-purple-light);
+  --dark-link-hover-bg: var(--color-dark-gray);
+  --color-shape: var(--color-black);
+}
+
+/* 1.3 Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --box-shadow: 6px 6px 0px var(--color-light-gray);
+    --link-color: var(--dark-link-color);
+    --link-hover-bg: var(--dark-link-hover-bg);
+    --color-shape: var(--color-light-gray);
+  }
+}
+
+/* 1.4 Reset styles */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* ==========================================================================
+   2. Base styles
+   ========================================================================== */
+
+/* 2.1 Body, buttons & media queries for dark mode */
+body,
+button {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: var(--primary-font);
+  text-rendering: optimizeSpeed;
+  line-height: 150%;
+  letter-spacing: 0.01rem;
+  word-break: keep-all;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: var(--color-light-gray);
+    background: var(--color-background-dark);
+  }
+
+  #icon-list-red {
+    background-color: #F99286;
+  }
+
+  #icon-list-yellow {
+    background-color: #FDC468;
+  }
+
+  #icon-list-green {
+    background-color: #9EC374;
+  }
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* 2.2 Focus and link styles */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* ==========================================================================
+   3. Typography
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 124%;
+  font-weight: 700;
+}
+
+h1 {
+  font-family: var(--display-font);
+  font-size: 2.441rem;
+  line-height: 120%;
+}
+
+h2 {
+  font-size: 1.953rem;
+}
+
+h3 {
+  font-size: 1.563rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+.display-heading {
+  font-size: 3.5rem;
+  line-height: 112%;
+}
+
+.card-tag,
+.sub-header {
+  font-family: var(--display-font);
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 120%;
+}
+
+.p-silent,
+.link-silent {
+  font-size: 0.9rem;
+  line-height: 150%;
+}
+
+/* ==========================================================================
+   4. Layout utilities
+   ========================================================================== */
+
+.wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.gap-48,
+.gap-32,
+.gap-24,
+.gap-16,
+.gap-8 {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-48 {
+  gap: 48px;
+}
+
+.gap-32 {
+  gap: 32px;
+}
+
+.gap-24 {
+  gap: 24px;
+}
+
+.gap-16 {
+  gap: 16px;
+}
+
+.gap-8 {
+  gap: 8px;
+}
+
+.margin-32 {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.margin-bottom-32 {
+  margin-bottom: 32px;
+}
+
+/* ==========================================================================
+   5. Components
+   ========================================================================== */
+
+hr {
+  border: none;
+  border-top: 0.5px solid var(--color-medium-gray);
+  margin: 0px;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+figure-caption {
+  text-align: end;
+}
+
+.figure {
+  align-self: center;
+  flex-direction: column;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  padding: 12px 24px;
+  background: var(--color-white);
+  border: var(--border);
+  color: var(--color-black);
+  box-shadow: var(--box-shadow);
+  align-self: stretch;
+  border-radius: 4px;
+}
+
+.link {
+  padding: 4px 8px;
+  display: block;
+  text-decoration: none;
+  color: var(--link-color);
+  width: fit-content;
+  font-style: normal;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px 0;
+  gap: 32px;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  color: var(--color-black);
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  justify-content: space-between;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.card-content {
+  align-items: flex-start;
+}
+
+.project-img {
+  border: var(--border);
+  display: flex;
+  box-shadow: var(--box-shadow);
+  border-radius: 4px;
+}
+
+.sticker,
+.in-progress {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: 4px;
+}
+
+.sticker {
+  align-self: stretch;
+  flex-direction: column;
+  margin: 0 -16px;
+  padding: 16px 0;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.in-progress {
+  padding: 6px 12px;
+  width: fit-content;
+}
+
+/* ==========================================================================
+   6. Navigation & footer
+   ========================================================================== */
+nav {
+  padding: 16px 0;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 24px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+footer {
+  align-items: center;
+  padding: 32px 0 48px;
+  gap: 4px;
+  text-align: center;
+}
+
+.get-in-touch {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+/* ==========================================================================
+   7. Icons and links
+   ========================================================================== */
+.icon-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 16px;
+}
+
+.icon-list-item {
+  display: flex;
+  gap: 16px;
+}
+
+.icon-always-white {
+  color: var(--color-white);
+}
+
+.oval {
+  height: 16px;
+  width: 16px;
+  border-radius: 100px;
+  border: none;
+  align-self: center;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+#icon-list-red {
+  background-color: #BF2310;
+}
+
+#icon-list-yellow {
+  background-color: #FBC02D;
+}
+
+#icon-list-green {
+  background-color: #0E813E;
+}
+
+@media (prefers-color-scheme: dark) {
+  #icon-list-red {
+    background-color: #F99286;
+  }
+
+  #icon-list-yellow {
+    background-color: #FDC468;
+  }
+
+  #icon-list-green {
+    background-color: #9EC374;
+  }
+}
+
+/* ==========================================================================
+   8. Color variations
+   ========================================================================== */
+.card-ccc {
+  background-color: var(--color-ccc);
+}
+
+.card-ecommerce-app {
+  background-color: var(--color-off-price-app);
+}
+
+.header-wrap-waysconf,
+.card-waysconf {
+  background-color: var(--color-waysconf);
+}
+
+.header-wrap-ccc {
+  background-color: var(--color-black);
+}
+
+.header-wrap-beatstars,
+.card-beatstars {
+  background-color: var(--color-beatstars);
+}
+
+.card-cmb,
+.header-wrap-cmb,
+.header-wrap-about-me {
+  background: var(--color-cmb-about-me);
+}
+
+.card-lowsugar,
+.header-wrap-lowsugar {
+  background: var(--color-lowsugar);
+}
+
+.card-dfw,
+.header-wrap-dfw {
+  background-color: var(--color-dfw);
+}
+
+.card-euphire,
+.header-wrap-euphire {
+  background-color: var(--color-euphire);
+}
+
+@media (prefers-color-scheme: dark) {
+  .header-wrap-waysconf {
+    background: var(--color-dark-waysconf);
+  }
+
+  .header-wrap-beatstars {
+    background: var(--color-black);
+  }
+
+  .header-wrap-about-me,
+  .header-wrap-cmb {
+    background: var(--color-dark-cmb-about-me);
+  }
+
+  .header-wrap-lowsugar {
+    background: var(--color-dark-lowsugar);
+  }
+
+  .header-wrap-dfw {
+    background: var(--color-dark-dfw);
+  }
+
+  .header-wrap-euphire {
+    background: var(--color-dark-euphire);
+  }
+}
+
+/* ==========================================================================
+   9. Image positioning
+   ========================================================================== */
+.euphire-image,
+.ccc-image,
+.e-commerce-app-image {
+  object-fit: contain;
+  width: 66%;
+  align-self: center;
+}
+
+.lowsugar-image {
+  margin-bottom: 6%;
+  align-self: end;
+  margin-right: -16px;
+}
+
+.waysconf-image {
+  align-self: flex-end;
+  overflow: hidden;
+  padding: 6% 4%;
+}
+
+.cmb-image {
+  align-self: flex-end;
+  margin-right: -32px;
+}
+
+.beatstars-image {
+  align-self: flex-end;
+  margin-right: -32px;
+  margin-bottom: -32px;
+  overflow: hidden;
+  padding-top: 2%;
+}
+
+.header-content {
+  padding: 32px 0;
+}
+
+.content-wrap {
+  margin: 32px 0;
+}
+
+.header-image,
+.header-image-wrap img {
+  border: var(--border);
+  border-radius: 4px;
+}
+
+.mockup-img {
+  filter: drop-shadow(-8px 8px 0px rgba(0, 0, 0, 0.3));
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.waysconf-image {
+  padding: 0 4% 0 4%;
+}
+
+.dfw-image {
+  margin-bottom: 6%;
+}
+
+/* ==========================================================================
+   10. iFrame components
+   ========================================================================== */
+.iframe-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  /* 16:9 aspect ratio */
+}
+
+.iframe-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   11. Lottie animation
+   ========================================================================== */
+#lottie {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: auto;
+  display: block;
+  object-fit: cover;
+}
+
+#lottie::before,
+#lottie::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8%;
+  z-index: 2;
+}
+
+#lottie::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+#lottie::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+@media (prefers-color-scheme: dark) {
+  #lottie::before {
+    background: linear-gradient(to right, var(--color-background-dark), rgba(31, 31, 31, 0));
+  }
+
+  #lottie::after {
+    background: linear-gradient(to left, var(--color-background-dark), rgba(31, 31, 31, 0));
+  }
+}
+
+/* ==========================================================================
+   12. Responsive styles
+   ========================================================================== */
+
+/* 12.1 Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 12.2 Hover effects for fine pointers */
+@media (prefers-color-scheme: dark) {
+  .icon-dark-mode {
+    color: var(--color-white);
+  }
+
+  .card-no-hover:hover {
+    box-shadow: 6px 6px 0px var(--color-medium-gray);
+  }
+}
+
+@media (pointer: fine) {
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .btn:hover,
+  .card:hover,
+  .project-img:hover,
+  .iframe-content:hover {
+    transform: translateY(4px);
+    box-shadow: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .link:hover {
+    background-color: var(--link-hover-bg);
+    text-decoration: none;
+    border-radius: 4px;
+  }
+
+  .icon-always-white:hover {
+    background-color: var(--dark-link-hover-bg);
+  }
+
+  .card-no-hover:hover {
+    transform: translateY(0px);
+    cursor: not-allowed;
+    box-shadow: 6px 6px 0px var(--color-medium-gray);
+  }
+}
+
+/* 12.3 Screen min-width 1140px */
+@media screen and (min-width: 1140px) {
+
+  p,
+  a,
+  button,
+  li {
+    font-size: 20px;
+    line-height: 150%;
+  }
+
+  .display-heading {
+    font-size: 5rem;
+    line-height: 100%;
+    margin-top: 32px;
+  }
+}
+
+/* 12.4 Screen max-width 620px */
+@media screen and (max-width: 620px) {
+  .lottie-container {
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #lottie {
+    height: 100%;
+    width: 100%;
+    min-width: 300%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .display-heading {
+    line-height: 104%;
+  }
+
+  .header-image-wrap {
+    aspect-ratio: 1 / 1;
+  }
+
+  .iframe-1-1-aspect-ratio {
+    padding-bottom: 100%;
+  }
+
+  .header-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nav-items {
+    gap: 8px;
+  }
+
+  h1 {
+    font-family: var(--display-font);
+    font-size: 1.9528rem;
+  }
+
+  h2 {
+    font-size: 1.5624rem;
+  }
+
+  h3 {
+    font-size: 1.2504rem;
+  }
+
+  h4,
+  .card-tag,
+  .sub-header {
+    font-size: 1.1rem;
+  }
+}

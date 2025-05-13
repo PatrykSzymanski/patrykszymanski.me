@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }} | Patryk Szymański</title>
+
+  <link rel="stylesheet" href="/css/fonts.css">
+  <link rel="stylesheet" href="/css/grid.css">
+  <link rel="stylesheet" href="/css/style.css">
+  {% if includeShapes %}
+  <link rel="stylesheet" href="/css/shapes.css">
+  {% endif %}
+  {% if includeMaterialIcons %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  {% endif %}
+
+  <meta name="title" content="Patryk Szymański | UX/Product Designer Portfolio">
+  <meta name="description" content="UX/Product Designer based in Kraków, Poland. See my portfolio and case studies">
+  <meta name="type" property="og:type" content="website" />
+  <meta name="author" content="Patryk Szymański">
+  <meta name="url" property="og:url" content="https://patrykszymanski.me" />
+  <meta property="og:image" content="https://patrykszymanski.me/images/og-image.png">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://patrykszymanski.me/">
+  <meta property="twitter:title" content="Patryk Szymański | UX/Product Designer Portfolio">
+  <meta property="twitter:description"
+    content="UX/Product Designer based in Kraków, Poland. See my portfolio and case studies">
+  <meta property="twitter:image" content="https://patrykszymanski.me/images/og-image.png">
+  {% if noIndex %}
+  <meta name="robots" content="noindex, nofollow">
+  {% endif %}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" type="image/png">
+
+  {% block head %}{% endblock %}
+</head>
+
+<body>
+  {% include "nav.njk" %}
+  <hr>
+  
+  {{ content | safe }}
+  
+  <hr>
+  {% include "footer.njk" %}
+
+  {% block scripts %}{% endblock %}
+
+</body>
+
+</html>

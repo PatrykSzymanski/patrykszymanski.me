@@ -9,3 +9,13 @@ images/icons/.DS_Store
 images/lowsugar/.DS_Store
 pdf/.DS_Store
 .vscode/settings.json
+
+# Eleventy
+_site/
+node_modules/
+.cache/
+.env
+
+# npm
+package-lock.json
+npm-debug.log

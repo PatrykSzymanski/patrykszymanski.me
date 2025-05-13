@@ -1,0 +1,21 @@
+{
+  "name": "patrykszymanski-portfolio",
+  "version": "1.0.0",
+  "description": "Patryk Szymański's UX/Product Designer Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "debug": "DEBUG=* eleventy"
+  },
+  "keywords": [
+    "portfolio",
+    "eleventy",
+    "static-site"
+  ],
+  "author": "Patryk Szymański",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

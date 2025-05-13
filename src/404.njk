@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title:  Page not found
+permalink: /404.html
+includeMaterialIcons: true
+---
+
+{% block content %}
+  <main class="grid margin-32">
+    <div class="content-wrap gap-48 col-desk-7 col-tab-8 col-mob-4">
+      <section class="gap-24">
+        <h1>Page not found</h1>
+        <div class="gap-16">
+          <p>We couldn't find the page you were looking for.</p>
+        </div>
+        <a href="/" class="link icon-link">
+          <i class="material-icons">arrow_back</i>
+          Go to homepage
+        </a>
+      </section>
+    </div>
+  </main>
+{% endblock %}
