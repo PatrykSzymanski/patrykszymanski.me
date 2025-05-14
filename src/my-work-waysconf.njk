@@ -1,49 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: base.njk
+title: WaysConf 2023
+includeMaterialIcons: true
+permalink: /my-work-waysconf/
+---
 
-<head>
-  <meta charset="utf-8">
-  <title>WaysConf 2023 | Patryk Szymański</title>
+{% block head %}
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-fullscreen.min.css" />
+{% endblock %}
 
-  <link rel="stylesheet" href="/css/fonts.css">
-  <link rel="stylesheet" href="/css/grid.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <meta name="title" content="Patryk Szymański | UX/Product Designer Portfolio">
-  <meta name="description" content="UX/Product Designer based in Kraków, Poland. See my portfolio and case studies.">
-  <meta name="type" property="og:type" content="website" />
-  <meta name="author" content="Patryk Szymański">
-  <meta name="url" property=" og:url" content="https://patrykszymanski.me" />
-  <meta property="og:image" content="https://patrykszymanski.me/images/og-image.png">
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://patrykszymanski.me/">
-  <meta property="twitter:title" content="Patryk Szymański | UX/Product Designer Portfolio">
-  <meta property="twitter:description"
-    content="UX/Product Designer based in Kraków, Poland. See my portfolio and case studies">
-  <meta property="twitter:image" content="https://patrykszymanski.me/images/og-image.png">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.png" type="image/png">
-
-</head>
-
-<body>
-  <nav class="grid">
-    <ul class="nav-items col-desk-12 col-tab-12 col-mob-4">
-      <li><a class="link nav-item" href="./#my-work.html">My work</a></li>
-      <li><a class="link nav-item" href="./about-me.html">About me</a></li>
-      <li><a class="link nav-item" href="./#get-in-touch.html">Get in touch</a></li>
-    </ul>
-  </nav>
-  <hr>
+{% block content %}
   <header class="header-wrap-waysconf">
     <div class="grid">
       <div class="header-content gap-32 col-desk-12 col-tab-12 col-mob-4">
         <div class="gap-32 col-desk-12">
-          <a href="./" class="link icon-link icon-dark-mode">
+          <a href="/" class="link icon-link icon-dark-mode">
             <i class="material-icons">arrow_back</i>
             Back
           </a>
@@ -60,7 +33,6 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
           </div>
-          <!--<p style="margin-top: 16px;" class="in-progress">English subtitles coming soon</p>-->
         </div>
       </div>
     </div>
@@ -127,24 +99,17 @@
             target="_blank">Doesn't work? Open in Figma</a>
         </div>
       </section>
-      <a href="./#my-work" class="link icon-link">
+      <a href="/#my-work" class="link icon-link">
         <i class="material-icons">arrow_forward</i>
         See more of my work
       </a>
     </div>
   </main>
-  <hr>
-  <footer class="grid">
-    <div class="col-desk-12 col-tab-12 col-mob-4">
-      <div class="gap-16">
-        <p class="p-silent">Designed for minimal environmental impact:<br> <a class="link-silent"
-            href="https://www.websitecarbon.com/website/patrykszymanski-me/" target="_blank">0.08g of
-            CO<sub>2</sub>/view </a>(cleaner than 93% of websites)</p>
-        <p class="p-silent">&copy; 2023 Coded by Patryk Szymański</p>
-      </div>
-    </div>
-  </footer>
+{% endblock %}
 
-</body>
-
-</html>
+{% block scripts %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
+  <script src="/js/lightgallery.js"></script>
+{% endblock %}

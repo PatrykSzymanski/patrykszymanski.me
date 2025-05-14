@@ -143,8 +143,7 @@ permalink: /my-work-ccc/
           <a class="lightgallery" href="/images/ccc/CCC-strategy.webp">
             <img class="project-img" src="/images/ccc/CCC-strategy.webp" alt="Document describing the CCC UX strategy">
           </a>
-          <figure-caption>UX strategy outline: bird’s eye view, short-term and long-term UX
-            recommendations</figure-caption>
+          <figure-caption>Document describing the CCC UX strategy</figure-caption>
         </figure>
       </div>
       <div class="gap-16">
@@ -155,13 +154,14 @@ permalink: /my-work-ccc/
             <img class="project-img" src="/images/ccc/CCC-audit-zoom.webp"
               alt="Document describing the CCC UX audit in detail">
           </a>
+          <figure-caption>Document describing the CCC UX audit in detail</figure-caption>
         </figure>
         <figure class="figure">
           <a class="lightgallery" href="/images/ccc/CCC-audit-overview.webp">
             <img class="project-img" src="/images/ccc/CCC-audit-overview.webp"
               alt="Document showing the CCC UX audit overview">
           </a>
-          <figure-caption>UX audit overview, featuring tags, screenshots, and priorities</figure-caption>
+          <figure-caption>Document showing the CCC UX audit overview</figure-caption>
         </figure>
       </div>
       <div class="gap-16">
@@ -178,7 +178,7 @@ permalink: /my-work-ccc/
             <img class="project-img" src="/images/ccc/CCC-quick-wins.webp"
               alt="Diagram showing sticky notes with quick wins">
           </a>
-          <figure-caption>Eisenhower Matrix used for identifying low hanging fruit</figure-caption>
+          <figure-caption>Diagram showing sticky notes with quick wins</figure-caption>
         </figure>
       </div>
       <div class="gap-16" id="designs">
@@ -205,7 +205,7 @@ permalink: /my-work-ccc/
         <a class="lightgallery" href="/images/ccc/ccc-signup.webp">
           <img class="project-img" src="/images/ccc/ccc-signup.webp" alt="Sign-up mockups overview in Figma">
         </a>
-        <figure-caption>Sign-up mockups overview</figure-caption>
+        <figure-caption>Sign-up mockups overview in Figma</figure-caption>
       </figure>
       <div class="gap-16">
         <h4>2. New CCC Club landing page </h4>
@@ -232,7 +232,7 @@ permalink: /my-work-ccc/
             <img class="project-img" src="/images/ccc/CCC-lp-overview.webp"
               alt="CCC Club landing page mockups overview in Figma">
           </a>
-          <figure-caption>Landing page designs in Figma</figure-caption>
+          <figure-caption>CCC Club landing page mockups overview in Figma</figure-caption>
         </figure>
       </div>
       <div class="gap-16">
@@ -287,7 +287,7 @@ permalink: /my-work-ccc/
           <a class="lightgallery" href="/images/ccc/CCC-method.webp">
             <img class="project-img" src="/images/ccc/CCC-method.webp" alt="Opportunity solution tree overview">
           </a>
-          <figure-caption>Opportunity Solution Tree structure in Miro</figure-caption>
+          <figure-caption>Opportunity solution tree overview</figure-caption>
         </figure>
       </div>
       <div class="gap-16">
@@ -429,23 +429,5 @@ permalink: /my-work-ccc/
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const galleries = document.querySelectorAll('.lightgallery');
-    galleries.forEach(gallery => {
-      lightGallery(gallery, {
-        selector: 'this',
-        plugins: [lgZoom, lgFullscreen],
-        download: false,
-        counter: false,
-        mobileSettings: {
-          controls: true,
-          showCloseIcon: true,
-          download: false,
-          rotate: false
-        }
-      });
-    });
-  });
-</script>
+<script src="/js/lightgallery.js"></script>
 {% endblock %}

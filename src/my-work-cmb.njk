@@ -1,58 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: base.njk
+title: Centrum Masażu Betula
+includeMaterialIcons: true
+permalink: /my-work-cmb/
+---
 
-<head>
-  <meta charset="utf-8">
-  <title>Centrum Masażu Betula | Patryk Szymański</title>
+{% block head %}
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-fullscreen.min.css" />
+{% endblock %}
 
-  <link rel="stylesheet" href="/css/fonts.css">
-  <link rel="stylesheet" href="/css/grid.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <meta name="title" content="Patryk Szymański | UX/Product Designer Portfolio">
-  <meta name="description" content="UX/Product Designer based in Kraków, Poland. See my portfolio and case studies.">
-  <meta name="type" property="og:type" content="website" />
-  <meta name="author" content="Patryk Szymański">
-  <meta name="url" property=" og:url" content="https://patrykszymanski.me" />
-  <meta property="og:image" content="https://patrykszymanski.me/images/og-image.png">
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://patrykszymanski.me/">
-  <meta property="twitter:title" content="Patryk Szymański | UX/Product Designer Portfolio">
-  <meta property="twitter:description"
-    content="UX/Product Designer based in Kraków, Poland. See my portfolio and case studies">
-  <meta property="twitter:image" content="https://patrykszymanski.me/images/og-image.png">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.png" type="image/png">
-
-  <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
-
-  <!-- lightgallery plugins -->
-  <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css" />
-  <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-fullscreen.min.css" />
-
-</head>
-
-<body>
-  <nav class="grid">
-    <ul class="nav-items col-desk-12 col-tab-12 col-mob-4">
-      <li><a class="link nav-item" href="./#my-work.html">My work</a></li>
-      <li><a class="link nav-item" href="./about-me.html">About me</a></li>
-      <li><a class="link nav-item" href="./#get-in-touch.html">Get in touch</a></li>
-    </ul>
-  </nav>
-  <hr>
+{% block content %}
   <header class="header-wrap-cmb">
     <div class="grid">
       <div class="header-content gap-32 col-desk-12 col-tab-12 col-mob-4">
         <div class="gap-32 col-desk-12">
-          <a href="./" class="link icon-link icon-dark-mode">
+          <a href="/" class="link icon-link icon-dark-mode">
             <i class="material-icons">arrow_back</i>
             Back
           </a>
@@ -63,7 +27,7 @@
           </div>
         </div>
         <figure class="header-image-wrap col-desk-12 col-tab-12 col-mob-4">
-          <img class="header-image" src="images/cmb/cmb-header-image.webp"
+          <img class="header-image" src="/images/cmb/cmb-header-image.webp"
             alt="Phone mockups with various screens of Centrum Masazu Betula website">
         </figure>
       </div>
@@ -159,10 +123,10 @@
           </p>
         </div>
         <figure class="figure">
-          <a class="lightgallery" href="images/cmb/cmb-image-0.webp">
-            <img class="project-img" src="images/cmb/cmb-image-0.webp" alt="Screenshot of the research summary sheet">
+          <a class="lightgallery" href="/images/cmb/cmb-image-0.webp">
+            <img class="project-img" src="/images/cmb/cmb-image-0.webp" alt="Screenshot of the research summary sheet">
           </a>
-          <figure-caption>Research summary sheet</figure-caption>
+          <figure-caption>Screenshot of the research summary sheet</figure-caption>
         </figure>
         <div class="gap-16">
           <h3>Customer Journey
@@ -176,10 +140,10 @@
             every step in the journey (not disclosed in this case study). All of this is enriched with customer quotes,
             matching every step of the flow.</p>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-1.webp">
-              <img class="project-img" src="images/cmb/cmb-image-1.webp" alt="Customer journey screenshot">
+            <a class="lightgallery" href="/images/cmb/cmb-image-1.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-1.webp" alt="Customer journey screenshot">
             </a>
-            <figure-caption>Customer journey preview</figure-caption>
+            <figure-caption>Customer journey screenshot</figure-caption>
           </figure>
           <a class="link"
             href="https://www.figma.com/file/A3Doiy2ChzhhQBGMsuR5vK/Centrum-Betula%3A-Mapa-%C5%9Acie%C5%BCki-Klienta-(PORTFOLIO)?node-id=6%3A703&t=VExNJDMc6tVoLKLs-1"
@@ -190,10 +154,11 @@
           <p>I've delivered low-fidelity UX mock-ups and accessibility recommendations for developers. The UI and the
             illustrations were created by another team member.</p>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-2.webp">
-              <img class="project-img" src="images/cmb/cmb-image-2.webp"
+            <a class="lightgallery" href="/images/cmb/cmb-image-2.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-2.webp"
                 alt="Tablet mockup with Centrum Masazu Betula homepage">
             </a>
+            <figure-caption>Tablet mockup with Centrum Masazu Betula homepage</figure-caption>
           </figure>
           <p>
             <a class="link" href="http://www.centrum-betula.pl" target="_blank">See the results on the website</a>
@@ -218,11 +183,11 @@
             <li>roles in the project</li>
           </ul>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-3.webp">
-              <img class="project-img" src="images/cmb/cmb-image-3.webp"
+            <a class="lightgallery" href="/images/cmb/cmb-image-3.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-3.webp"
                 alt="Spreadsheet with project tasks and priorities">
             </a>
-            <figure-caption>The scope of my work</figure-caption>
+            <figure-caption>Spreadsheet with project tasks and priorities</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
@@ -238,8 +203,8 @@
             owner, who knows the customers best.
           </p>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-4.webp">
-              <img class="project-img" src="images/cmb/cmb-image-4.webp" alt="Employee interview script">
+            <a class="lightgallery" href="/images/cmb/cmb-image-4.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-4.webp" alt="Employee interview script">
             </a>
             <figure-caption>Employee interview script</figure-caption>
           </figure>
@@ -265,8 +230,8 @@
           </p>
           <p>All interviews were conducted remotely on Zoom.</p>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-5.webp">
-              <img class="project-img" src="images/cmb/cmb-image-5.webp" alt="Client interview script">
+            <a class="lightgallery" href="/images/cmb/cmb-image-5.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-5.webp" alt="Client interview script">
             </a>
             <figure-caption>Client interview script</figure-caption>
           </figure>
@@ -291,10 +256,10 @@
           <p>I gathered observations in Google Sheets and summarized them by adding my own interpretation and
             conclusions based on the data.</p>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-6.webp">
-              <img class="project-img" src="images/cmb/cmb-image-6.webp" alt="Part of interview results">
+            <a class="lightgallery" href="/images/cmb/cmb-image-6.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-6.webp" alt="Part of interview results">
             </a>
-            <figure-caption>Data analysis sheet</figure-caption>
+            <figure-caption>Part of interview results</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
@@ -308,7 +273,7 @@
             <li>Can afford extra treatments</li>
             <li>Booking online</li>
             <li>Focused on customer reviews</li>
-          </ul>
+          </li>
           <p>We created a <strong>detailed customer journey map</strong> for this particular segment. It features a
             section about factors impacting conversion (booking a massage), both positively and negatively. This set of
             factors is one of the most important findings from my research.</p>
@@ -323,11 +288,11 @@
             project manager, and software developers. At this stage, our workflow became particularly iterative and
             cooperative.</p>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-7.webp">
-              <img class="project-img" src="images/cmb/cmb-image-7.webp"
+            <a class="lightgallery" href="/images/cmb/cmb-image-7.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-7.webp"
                 alt="Early stage Centrum Masazu Betula website sketches">
             </a>
-            <figure-caption>First sketches</figure-caption>
+            <figure-caption>Early stage Centrum Masazu Betula website sketches</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
@@ -338,17 +303,18 @@
           <p>Our work continued for several sprints. Once it was done, the software house developers coded the new
             website according to our guidelines.</p>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-8.webp">
-              <img class="project-img" src="images/cmb/cmb-image-8.webp"
+            <a class="lightgallery" href="/images/cmb/cmb-image-8.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-8.webp"
                 alt="Miro board with low-fidelity website mockups">
             </a>
+            <figure-caption>Miro board with low-fidelity website mockups</figure-caption>
           </figure>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-9.webp">
-              <img class="project-img" src="images/cmb/cmb-image-9.webp"
+            <a class="lightgallery" href="/images/cmb/cmb-image-9.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-9.webp"
                 alt="Miro board wtih close-up on low-fidelity website mockups">
             </a>
-            <figure-caption>Lo-fi website mockups and team feedback on sticky notes</figure-caption>
+            <figure-caption>Miro board wtih close-up on low-fidelity website mockups</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
@@ -356,17 +322,18 @@
           <p>Once the first prototype was ready, I conducted <strong>usability tests</strong> with 5 people. At this
             stage, I found the most common issues and addressed them in the next iteration.</p>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-10.webp">
-              <img class="project-img" src="images/cmb/cmb-image-10.webp"
+            <a class="lightgallery" href="/images/cmb/cmb-image-10.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-10.webp"
                 alt="Miro board with low-fidelity website mockups surrounded by sticky notes">
             </a>
+            <figure-caption>Miro board with low-fidelity website mockups surrounded by sticky notes</figure-caption>
           </figure>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-11.webp">
-              <img class="project-img" src="images/cmb/cmb-image-11.webp"
+            <a class="lightgallery" href="/images/cmb/cmb-image-11.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-11.webp"
                 alt="Overview of tasks completed during the user tests">
             </a>
-            <figure-caption>Usability test artifacts</figure-caption>
+            <figure-caption>Overview of tasks completed during the user tests</figure-caption>
           </figure>
         </div>
         <div class="gap-16">
@@ -375,11 +342,11 @@
             graphic designer who created the hi-fi mock-ups and illustrations. At this stage, we met every week as a
             team to align and share feedback on the final product.</p>
           <figure class="figure">
-            <a class="lightgallery" href="images/cmb/cmb-image-12.webp">
-              <img class="project-img" src="images/cmb/cmb-image-12.webp"
+            <a class="lightgallery" href="/images/cmb/cmb-image-12.webp">
+              <img class="project-img" src="/images/cmb/cmb-image-12.webp"
                 alt="Miro board with high-fidelity website mockups">
             </a>
-            <figure-caption>Hi-fi mockups feedback session</figure-caption>
+            <figure-caption>Miro board with high-fidelity website mockups</figure-caption>
           </figure>
         </div>
       </section>
@@ -395,48 +362,17 @@
           <li>ClickUp</li>
         </ul>
       </section>
-      <a href="./#my-work" class="link icon-link">
+      <a href="/#my-work" class="link icon-link">
         <i class="material-icons">arrow_forward</i>
         See more of my work
       </a>
     </div>
   </main>
-  <hr>
-  <footer class="grid">
-    <div class="col-desk-12 col-tab-12 col-mob-4">
-      <div class="gap-16">
-        <p class="p-silent">Designed for minimal environmental impact:<br> <a class="link-silent"
-            href="https://www.websitecarbon.com/website/patrykszymanski-me/" target="_blank">0.08g of
-            CO<sub>2</sub>/view </a>(cleaner than 93% of websites)</p>
-        <p class="p-silent">&copy; 2023 Coded by Patryk Szymański</p>
-      </div>
-    </div>
-  </footer>
+{% endblock %}
 
+{% block scripts %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
-
-  <!-- lightgallery plugins -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
-
-    <script type="text/javascript">
-      document.querySelectorAll('.lightgallery').forEach(element => {
-        lightGallery(element, {
-          plugins: [lgZoom, lgFullscreen],
-          speed: 500,
-          download: false,
-          counter: false,
-          infiniteZoom: true,
-          showZoomInOutIcons: true,
-          actualSize: false,
-          getCaptionFromTitleOrAlt: false,
-          mobileSettings: {
-            showCloseIcon: true,
-          }
-        });
-      });
-    </script>
-</body>
-
-</html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
+  <script src="/js/lightgallery.js"></script>
+{% endblock %}

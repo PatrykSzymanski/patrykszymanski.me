@@ -1,58 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: base.njk
+title: Euphire
+includeMaterialIcons: true
+permalink: /my-work-euphire/
+---
 
-<head>
-  <meta charset="utf-8">
-  <title>Euphire | Patryk Szymański</title>
+{% block head %}
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-fullscreen.min.css" />
+{% endblock %}
 
-  <link rel="stylesheet" href="/css/fonts.css">
-  <link rel="stylesheet" href="/css/grid.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <meta name="title" content="Patryk Szymański | UX/Product Designer Portfolio">
-  <meta name="description" content="UX/Product Designer based in Kraków, Poland. See my portfolio and case studies.">
-  <meta name="type" property="og:type" content="website" />
-  <meta name="author" content="Patryk Szymański">
-  <meta name="url" property=" og:url" content="https://patrykszymanski.me" />
-  <meta property="og:image" content="https://patrykszymanski.me/images/og-image.png">
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://patrykszymanski.me/">
-  <meta property="twitter:title" content="Patryk Szymański | UX/Product Designer Portfolio">
-  <meta property="twitter:description"
-    content="UX/Product Designer based in Kraków, Poland. See my portfolio and case studies">
-  <meta property="twitter:image" content="https://patrykszymanski.me/images/og-image.png">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.png" type="image/png">
-
-  <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
-
-  <!-- lightgallery plugins -->
-  <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css" />
-  <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-fullscreen.min.css" />
-
-</head>
-
-<body>
-  <nav class="grid">
-    <ul class="nav-items col-desk-12 col-tab-12 col-mob-4">
-      <li><a class="link nav-item" href="./#my-work.html">My work</a></li>
-      <li><a class="link nav-item" href="./about-me.html">About me</a></li>
-      <li><a class="link nav-item" href="./#get-in-touch.html">Get in touch</a></li>
-    </ul>
-  </nav>
-  <hr>
+{% block content %}
   <header class="header-wrap-euphire">
     <div class="grid">
       <div class="header-content gap-32 col-desk-12 col-tab-12 col-mob-4">
         <div class="gap-32 col-desk-12">
-          <a href="./" class="link icon-link icon-dark-mode">
+          <a href="/" class="link icon-link icon-dark-mode">
             <i class="material-icons">arrow_back</i>
             Back
           </a>
@@ -63,7 +27,7 @@
           </div>
         </div>
         <figure class="header-image-wrap col-desk-12 col-tab-12 col-mob-4">
-          <img class="header-image" src="images/euphire/euphire-header-image.webp"
+          <img class="header-image" src="/images/euphire/euphire-header-image.webp"
             alt="Browser mockup with the Euphire website and a magnifying glass on the shop button">
         </figure>
       </div>
@@ -119,24 +83,24 @@
             </li>
           </ul>
           <figure class="figure">
-            <a class="lightgallery" href="images/euphire/euphire-image-0.webp">
-              <img class="project-img" src="images/euphire/euphire-image-0.webp" alt="User interview script">
+            <a class="lightgallery" href="/images/euphire/euphire-image-0.webp">
+              <img class="project-img" src="/images/euphire/euphire-image-0.webp" alt="User interview script">
             </a>
             <figure-caption>User interview script</figure-caption>
           </figure>
           <figure class="figure">
-            <a class="lightgallery" href="images/euphire/euphire-image-1.webp">
-              <img class="project-img" src="images/euphire/euphire-image-1.webp"
+            <a class="lightgallery" href="/images/euphire/euphire-image-1.webp">
+              <img class="project-img" src="/images/euphire/euphire-image-1.webp"
                 alt="Screenshot of the video chat with a respondent">
             </a>
-            <figure-caption>Video chat with a respondent</figure-caption>
+            <figure-caption>Screenshot of the video chat with a respondent</figure-caption>
           </figure>
           <figure class="figure">
-            <a class="lightgallery" href="images/euphire/euphire-image-2.webp">
-              <img class="project-img" src="images/euphire/euphire-image-2.webp"
+            <a class="lightgallery" href="/images/euphire/euphire-image-2.webp">
+              <img class="project-img" src="/images/euphire/euphire-image-2.webp"
                 alt="Mobile phone in hand with Euphire website visible on the screen">
             </a>
-            <figure-caption>User test with mobile device</figure-caption>
+            <figure-caption>Mobile phone in hand with Euphire website visible on the screen</figure-caption>
           </figure>
         </div>
       </section>
@@ -168,11 +132,11 @@
           </ul>
           <p>Critical and serious problems were fixed in cooperation with developers.</p>
           <figure class="figure">
-            <a class="lightgallery" href="images/euphire/euphire-image-3.webp">
-              <img class="project-img" src="images/euphire/euphire-image-3.webp"
+            <a class="lightgallery" href="/images/euphire/euphire-image-3.webp">
+              <img class="project-img" src="/images/euphire/euphire-image-3.webp"
                 alt="Spreadsheet with the user tests results">
             </a>
-            <figure-caption>Part of the user tests results</figure-caption>
+            <figure-caption>Spreadsheet with the user tests results</figure-caption>
           </figure>
           <p>See the results:<a class="link"
               href="https://drive.google.com/file/d/1RALVwax0z2QMK55DOpKWcpU3cuYyntfB/view?usp" target="_blank">Results
@@ -180,48 +144,17 @@
               table in PDF</a>
         </div>
       </section>
-      <a href="./#my-work" class="link icon-link">
+      <a href="/#my-work" class="link icon-link">
         <i class="material-icons">arrow_forward</i>
         See more of my work
       </a>
     </div>
   </main>
-  <hr>
-  <footer class="grid">
-    <div class="col-desk-12 col-tab-12 col-mob-4">
-      <div class="gap-16">
-        <p class="p-silent">Designed for minimal environmental impact:<br> <a class="link-silent"
-            href="https://www.websitecarbon.com/website/patrykszymanski-me/" target="_blank">0.08g of
-            CO<sub>2</sub>/view </a>(cleaner than 93% of websites)</p>
-        <p class="p-silent">&copy; 2023 Coded by Patryk Szymański</p>
-      </div>
-    </div>
-  </footer>
+{% endblock %}
 
+{% block scripts %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
-
-  <!-- lightgallery plugins -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
-
-  <script type="text/javascript">
-    document.querySelectorAll('.lightgallery').forEach(element => {
-      lightGallery(element, {
-        plugins: [lgZoom, lgFullscreen],
-        speed: 500,
-        download: false,
-        counter: false,
-        infiniteZoom: true,
-        showZoomInOutIcons: true,
-        actualSize: false,
-        getCaptionFromTitleOrAlt: false,
-        mobileSettings: {
-          showCloseIcon: true,
-        }
-      });
-    });
-  </script>
-</body>
-
-</html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
+  <script src="/js/lightgallery.js"></script>
+{% endblock %}
