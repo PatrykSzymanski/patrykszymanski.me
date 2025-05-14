@@ -48,6 +48,9 @@
   <hr>
   {% include "footer.njk" %}
 
+  {% if includeLightGallery %}
+  <script src="/js/lightgallery-bundle.js"></script>
+  {% endif %}
   {% block scripts %}{% endblock %}
 
 </body>
