@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rm -rf _site",
     "build": "npm run clean && eleventy && webpack --mode production",
+    "build:cloudflare": "chmod +x ./build.sh && ./build.sh",
     "build:js": "webpack --mode production",
     "dev": "npm run clean && eleventy --serve & webpack --watch --mode development",
     "serve": "eleventy --serve",

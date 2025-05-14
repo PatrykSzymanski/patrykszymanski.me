@@ -7,7 +7,8 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, '_site/js')
+    path: path.resolve(__dirname, '_site/js'),
+    publicPath: '/'
   },
   devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
   module: {
