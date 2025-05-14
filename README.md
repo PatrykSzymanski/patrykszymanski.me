@@ -31,10 +31,16 @@ This site is built using:
 Run the development server with:
 
 ```
-npm run serve
+npm run dev
 ```
 
-This will start a local server at http://localhost:8080 with live reloading.
+This will first clean the output directory, then start a local server at http://localhost:8080 with live reloading, and watch for changes to process JavaScript.
+
+If you only need the server without JavaScript processing:
+
+```
+npm run serve
+```
 
 ### Build
 
@@ -44,7 +50,17 @@ To build the site for production:
 npm run build
 ```
 
-The built site will be in the `_site` directory.
+This will first clean the output directory, then build the site with Eleventy and bundle JavaScript with Webpack. The built site will be in the `_site` directory.
+
+### Clean
+
+To clean the output directory without building:
+
+```
+npm run clean
+```
+
+This removes the `_site` directory and all its contents.
 
 ## Features
 

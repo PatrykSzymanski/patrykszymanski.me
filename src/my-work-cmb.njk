@@ -6,9 +6,7 @@ permalink: /my-work-cmb/
 ---
 
 {% block head %}
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css" />
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-fullscreen.min.css" />
+  {% include "lightgallery.njk" %}
 {% endblock %}
 
 {% block content %}
@@ -371,8 +369,5 @@ permalink: /my-work-cmb/
 {% endblock %}
 
 {% block scripts %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
-  <script src="/js/lightgallery.js"></script>
+  <script src="/js/lightgallery-bundle.js"></script>
 {% endblock %}

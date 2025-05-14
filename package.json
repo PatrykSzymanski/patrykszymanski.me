@@ -4,7 +4,10 @@
   "description": "Patryk Szymański's UX/Product Designer Portfolio",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy",
+    "clean": "rm -rf _site",
+    "build": "npm run clean && eleventy && webpack --mode production",
+    "build:js": "webpack --mode production",
+    "dev": "npm run clean && eleventy --serve & webpack --watch --mode development",
     "serve": "eleventy --serve",
     "debug": "DEBUG=* eleventy"
   },
@@ -16,6 +19,17 @@
   "author": "Patryk Szymański",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "mini-css-extract-plugin": "^2.9.2",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "lightgallery": "^2.8.3"
   }
 }
