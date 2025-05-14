@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf _site",
-    "build": "npm run clean && eleventy && webpack --mode production",
-    "build:cloudflare": "chmod +x ./build.sh && ./build.sh",
-    "build:js": "webpack --mode production",
-    "dev": "npm run clean && eleventy --serve & webpack --watch --mode development",
+    "build": "npm run clean && eleventy && ./node_modules/.bin/webpack --mode production",
+    "build:js": "./node_modules/.bin/webpack --mode production",
+    "dev": "npm run clean && eleventy --serve & ./node_modules/.bin/webpack --watch --mode development",
     "serve": "eleventy --serve",
     "debug": "DEBUG=* eleventy"
   },
@@ -29,8 +28,5 @@
     "style-loader": "^4.0.0",
     "webpack": "^5.99.8",
     "webpack-cli": "^6.0.1"
-  },
-  "dependencies": {
-    "lightgallery": "^2.8.3"
   }
 }

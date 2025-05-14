@@ -1,6 +1,0 @@
-# This file tells Cloudflare Pages how to build your site
-# See: https://developers.cloudflare.com/pages/platform/build-configuration
-
-[build]
-command = "npm run build:cloudflare"
-publish = "_site"

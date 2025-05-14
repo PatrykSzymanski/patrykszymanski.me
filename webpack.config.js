@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    'lightgallery-bundle': path.resolve(__dirname, 'src/js/lightgallery-main.js')
+    'shapes': path.resolve(__dirname, 'src/js/shapes.js')
   },
   output: {
     filename: '[name].js',

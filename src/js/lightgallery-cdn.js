@@ -1,16 +1,9 @@
-import lightGallery from 'lightgallery';
-import lgZoom from 'lightgallery/plugins/zoom';
-import lgFullscreen from 'lightgallery/plugins/fullscreen';
-
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-fullscreen.css';
 document.addEventListener('DOMContentLoaded', function () {
     const galleries = document.querySelectorAll('.lightgallery');
     galleries.forEach(gallery => {
         lightGallery(gallery, {
             selector: 'this',
-            plugins: [lgZoom, lgFullscreen],
+            plugins: [lgZoom, lgThumbnail, lgFullscreen],
             download: false,
             counter: false,
             showZoomInOutIcons: true,
