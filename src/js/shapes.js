@@ -1,5 +1,3 @@
-// js/shapes.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Body, Query, Events } = Matter;
     const container = document.getElementById('shapes-container');
