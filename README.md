@@ -2,82 +2,35 @@
 
 This is the personal portfolio website for Patryk Szymański, a UX/Product Designer based in Kraków, Poland.
 
-## Technology
+## Live website
 
-This site is built using:
+![Portfolio Preview](src/images/og-image.png)
 
-- [Eleventy](https://www.11ty.dev/) - A simpler static site generator
-- Custom responsive grid system
-- Vanilla JavaScript
-- Lottie animations
+[www.patrykszymanski.me](http://www.patrykszymanski.me)
 
-## Development
+## Technologies used
 
-### Prerequisites
+- [Eleventy](https://www.11ty.dev/) - Static site generator
+- HTML/CSS/JavaScript
+- Nunjucks templates (.njk)
+- SCSS for styling
 
-- Node.js (v14 or newer)
-- npm
+## Created with AI
 
-### Setup
+2025:
+- Dark mode
+- Eleventy configuration and optimization
+- Interactive shapes with simple physics game
 
-1. Clone the repository
-2. Install dependencies:
-   ```
-   npm install
-   ```
+## Commands
 
-### Development Server
-
-Run the development server with:
-
-```
-npm run dev
-```
-
-This will first clean the output directory, then start a local server at http://localhost:8080 with live reloading, and watch for changes to process JavaScript.
-
-If you only need the server without JavaScript processing:
-
-```
-npm run serve
-```
-
-### Build
-
-To build the site for production:
-
-```
-npm run build
-```
-
-This will first clean the output directory, then build the site with Eleventy and bundle JavaScript with Webpack. The built site will be in the `_site` directory.
-
-### Clean
-
-To clean the output directory without building:
-
-```
-npm run clean
-```
-
-This removes the `_site` directory and all its contents.
-
-## Features
-
-- Responsive design with custom grid system
-- Light/dark mode toggle with localStorage persistence
-- Case studies with image galleries
-- Minimal environmental impact design
-
-## Structure
-
-- `src/` - Source files
-  - `_includes/` - Template partials and layouts
-  - `css/` - Stylesheets
-  - `js/` - JavaScript files
-  - `images/` - Image assets
-  - `*.njk` - Page templates
+- `npm run dev` - Start development server with auto-reload
+- `npm run build` - Build site for production
+- `npm run serve` - Serve pre-built site
+- `npm run preview` - Build and serve site
 
 ## License
 
-© 2023 Patryk Szymański
+© 2025 Patryk Szymański. All rights reserved.
+
+Unauthorized reproduction or distribution of this portfolio or its contents is prohibited.
