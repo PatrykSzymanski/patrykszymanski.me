@@ -19,6 +19,7 @@ This is the personal portfolio website for Patryk Szymański, a UX/Product Desig
 
 2025:
 - Dark mode
+- CSS variables
 - Eleventy configuration and optimization
 - Interactive shapes with simple physics game
 
