@@ -10,10 +10,11 @@ This is the personal portfolio website for Patryk Szymański, a UX/Product Desig
 
 ## Technologies used
 
-- [Eleventy](https://www.11ty.dev/) - Static site generator
 - HTML/CSS/JavaScript
 - Nunjucks templates (.njk)
-- SCSS for styling
+- [Eleventy](https://www.11ty.dev/) - Static site generator
+- [Tiny Flexbox Grid System](https://pavellaptev.github.io/tiny-flexbox-grid-system/) - Responsive grid system
+- [Lightgallery](https://www.lightgalleryjs.com/) - Image gallery
 
 ## Created with AI
 
@@ -29,6 +30,10 @@ This is the personal portfolio website for Patryk Szymański, a UX/Product Desig
 - `npm run build` - Build site for production
 - `npm run serve` - Serve pre-built site
 - `npm run preview` - Build and serve site
+
+## Robots
+
+All web crawlers are blocked from accessing the entire website.
 
 ## License
 
