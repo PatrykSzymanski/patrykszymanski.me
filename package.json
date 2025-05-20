@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf _site",
-    "build": "npm prune && npm run clean && eleventy",
+    "build": "npm ci && npm run clean && eleventy",
+    "build:local": "npm update && npm prune && npm run clean && eleventy",
     "dev": "npm run clean && eleventy --serve",
     "serve": "eleventy --serve",
-    "preview": "npm run build && npm run serve",
+    "preview": "npm run build:local && npm run serve",
     "debug": "DEBUG=* eleventy"
   },
   "keywords": [

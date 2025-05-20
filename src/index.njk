@@ -1,8 +1,14 @@
 ---
 layout: base.njk
 title: Portfolio
-includeShapes: true
+includeMaterialIcons: false
+includeLightGallery: false
+noIndex: true
 ---
+
+{% block head %}
+  <link rel="stylesheet" href="/css/shapes.css">
+{% endblock %}
 
 {% block content %}
   <header class="grid header margin-32 gap-32">
