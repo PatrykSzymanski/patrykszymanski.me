@@ -8,6 +8,7 @@ permalink: /my-work-cmb/
 ---
 
 {% block head %}
+<link rel="preload" href="/images/cmb/cmb-header-image.webp" as="image">
 {% endblock %}
 
 {% block content %}
@@ -26,7 +27,7 @@ permalink: /my-work-cmb/
           </div>
         </div>
         <figure class="header-image-wrap col-desk-12 col-tab-12 col-mob-4">
-          <img class="header-image" src="/images/cmb/cmb-header-image.webp"
+          <img class="header-image" src="/images/cmb/cmb-header-image.webp" fetchpriority="high"
             alt="Phone mockups with various screens of Centrum Masazu Betula website">
         </figure>
       </div>
