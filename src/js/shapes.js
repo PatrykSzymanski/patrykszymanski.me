@@ -150,18 +150,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupMouseControl() {
         const mouse = Mouse.create(render.canvas);
+        
+        render.canvas.removeEventListener('mousewheel', mouse.mousewheel);
+        render.canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel);
+        
         const mouseConstraint = MouseConstraint.create(engine, {
-            mouse,
-            constraint: { stiffness: 0.2, render: { visible: false } }
+            mouse: mouse,
+            constraint: { 
+                stiffness: 0.2, 
+                render: { visible: false } 
+            }
         });
+        
         Composite.add(engine.world, mouseConstraint);
         render.mouse = mouse;
-
+        
         render.canvas.addEventListener('mousemove', (event) => {
             const mousePosition = { x: event.offsetX, y: event.offsetY };
-            const hoveredBody = Query.point(dynamicBodies, mousePosition);
-            render.canvas.style.cursor = (hoveredBody.length > 0) ? 'pointer' : 'default';
+            const hoveredBodies = Query.point(dynamicBodies, mousePosition);
+            render.canvas.style.cursor = hoveredBodies.length > 0 ? 'pointer' : 'default';
         }, { passive: true });
+        
+        render.canvas.addEventListener('wheel', (event) => {
+            const originalStiffness = mouseConstraint.constraint.stiffness;
+            
+            mouseConstraint.constraint.stiffness = 0;
+            
+            setTimeout(() => {
+                mouseConstraint.constraint.stiffness = originalStiffness;
+            }, 50);
+        }, { passive: true });
+        
+        return mouseConstraint;
     }
 
     let resizeRequested = false;
