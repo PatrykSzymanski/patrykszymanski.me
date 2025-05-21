@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Body, Query, Events } = Matter;
+    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Body, Query, Events, World } = Matter;
     const container = document.getElementById('shapes-container');
     if (!container) return;
 
@@ -10,12 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const RESET_MARGIN = 50;
     const RESET_THROTTLE = 100;
 
+    let currentShapeColor = '';
+
     const config = {
-        get width() { return container.clientWidth; },
-        get height() { return Math.max(container.clientHeight, MIN_HEIGHT); }
+        width: container.clientWidth,
+        height: Math.max(container.clientHeight, MIN_HEIGHT),
+        update() {
+            this.width = container.clientWidth;
+            this.height = Math.max(container.clientHeight, MIN_HEIGHT);
+            return this;
+        }
     };
 
-    const engine = Engine.create();
+    const engine = Engine.create({
+        positionIterations: 6,
+        velocityIterations: 4
+    });
     engine.world.gravity.y = 0.4;
 
     const render = Render.create({
@@ -34,40 +44,49 @@ document.addEventListener('DOMContentLoaded', () => {
     render.canvas.style.imageRendering = 'pixelated';
 
     function getShapeColor() {
-        return getComputedStyle(document.documentElement).getPropertyValue('--color-shape').trim() || '#000000';
+        const newColor = getComputedStyle(document.documentElement).getPropertyValue('--color-shape').trim() || '#000000';
+        if (newColor !== currentShapeColor) {
+            currentShapeColor = newColor;
+        }
+        return currentShapeColor;
     }
 
+    const commonShapeProps = {
+        restitution: 0.3,
+        friction: 0.1,
+        frictionAir: 0.01
+    };
+
     function createShape(type, x, y, color) {
-        const commonProps = {
-            restitution: 0.3,
-            friction: 0.1,
-            frictionAir: 0.01,
-            render: { fillStyle: color }
-        };
+        const renderProps = { render: { fillStyle: color } };
+        const props = { ...commonShapeProps, ...renderProps };
+        
         switch (type) {
             case 'circle':
-                return Bodies.circle(x, y, SHAPE_SIZE / 2, commonProps);
+                return Bodies.circle(x, y, SHAPE_SIZE / 2, props);
             case 'rectangle':
                 return Bodies.rectangle(x, y, SHAPE_SIZE, SHAPE_SIZE, {
-                    ...commonProps,
+                    ...props,
                     chamfer: { radius: 16, quality: 10 }
                 });
             case 'triangle':
                 return Bodies.polygon(x, y, 3, TRIANGLE_RADIUS, {
-                    ...commonProps,
+                    ...props,
                     chamfer: { radius: 16, quality: 10 }
                 });
             default:
-                return Bodies.rectangle(x, y, SHAPE_SIZE, SHAPE_SIZE, { ...commonProps, render: { fillStyle: '#dddddd' } });
+                return Bodies.rectangle(x, y, SHAPE_SIZE, SHAPE_SIZE, { ...props, render: { fillStyle: '#dddddd' } });
         }
     }
 
+    const boundaryOptions = { isStatic: true, render: { visible: false } };
+    
     function createBoundaries(width, height) {
         return [
-            Bodies.rectangle(width / 2, height + WALL_THICKNESS / 2, width, WALL_THICKNESS, { isStatic: true, render: { visible: false } }),
-            Bodies.rectangle(width / 2, -WALL_THICKNESS / 2, width, WALL_THICKNESS, { isStatic: true, render: { visible: false } }),
-            Bodies.rectangle(-WALL_THICKNESS / 2, height / 2, WALL_THICKNESS, height, { isStatic: true, render: { visible: false } }),
-            Bodies.rectangle(width + WALL_THICKNESS / 2, height / 2, WALL_THICKNESS, height, { isStatic: true, render: { visible: false } })
+            Bodies.rectangle(width / 2, height + WALL_THICKNESS / 2, width, WALL_THICKNESS, boundaryOptions),
+            Bodies.rectangle(width / 2, -WALL_THICKNESS / 2, width, WALL_THICKNESS, boundaryOptions),
+            Bodies.rectangle(-WALL_THICKNESS / 2, height / 2, WALL_THICKNESS, height, boundaryOptions),
+            Bodies.rectangle(width + WALL_THICKNESS / 2, height / 2, WALL_THICKNESS, height, boundaryOptions)
         ];
     }
 
@@ -89,25 +108,31 @@ document.addEventListener('DOMContentLoaded', () => {
     function initializeShapes() {
         const color = getShapeColor();
         const types = ['rectangle', 'circle', 'triangle'];
-        const shapes = types.map(type => {
+        const shapes = [];
+        
+        for (let i = 0; i < types.length; i++) {
             const x = Math.random() * (config.width - SHAPE_SIZE) + SHAPE_SIZE / 2;
             const y = Math.random() * (config.height / 2) + SHAPE_SIZE / 2;
-            return createShape(type, x, y, color);
-        });
+            shapes.push(createShape(types[i], x, y, color));
+        }
+        
         Composite.add(engine.world, shapes);
         updateDynamicBodiesCache();
     }
 
+    const resetPosition = { x: 0, y: 0 };
+    const zeroVelocity = { x: 0, y: 0 };
+    
     function resetShapeIfOutOfBounds(body) {
         const { width, height } = config;
         const { x, y } = body.position;
+        
         if (x < -RESET_MARGIN || x > width + RESET_MARGIN ||
             y < -RESET_MARGIN || y > height + RESET_MARGIN) {
-            Body.setPosition(body, {
-                x: width / 2 + (Math.random() - 0.5) * 100,
-                y: height / 2 + (Math.random() - 0.5) * 100
-            });
-            Body.setVelocity(body, { x: 0, y: 0 });
+            resetPosition.x = width / 2 + (Math.random() - 0.5) * 100;
+            resetPosition.y = height / 2 + (Math.random() - 0.5) * 100;
+            Body.setPosition(body, resetPosition);
+            Body.setVelocity(body, zeroVelocity);
             Body.setAngularVelocity(body, 0);
         }
     }
@@ -116,7 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function throttledCheckAndResetShapes() {
         const now = Date.now();
         if (now - lastResetTime > RESET_THROTTLE) {
-            dynamicBodies.forEach(resetShapeIfOutOfBounds);
+            for (let i = 0; i < dynamicBodies.length; i++) {
+                resetShapeIfOutOfBounds(dynamicBodies[i]);
+            }
             lastResetTime = now;
         }
     }
@@ -134,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const mousePosition = { x: event.offsetX, y: event.offsetY };
             const hoveredBody = Query.point(dynamicBodies, mousePosition);
             render.canvas.style.cursor = (hoveredBody.length > 0) ? 'pointer' : 'default';
-        });
+        }, { passive: true });
     }
 
     let resizeRequested = false;
@@ -143,14 +170,16 @@ document.addEventListener('DOMContentLoaded', () => {
             resizeRequested = true;
             requestAnimationFrame(() => {
                 resizeRequested = false;
-                const width = config.width;
-                const height = config.height;
+                config.update();
+                const { width, height } = config;
+                
                 render.bounds.max.x = width;
                 render.bounds.max.y = height;
                 render.options.width = width;
                 render.options.height = height;
                 render.canvas.width = width;
                 render.canvas.height = height;
+                
                 Composite.remove(engine.world, boundaries);
                 boundaries = createBoundaries(width, height);
                 Composite.add(engine.world, boundaries);
@@ -160,9 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateShapeColors() {
         const color = getShapeColor();
-        dynamicBodies.forEach(body => {
-            body.render.fillStyle = color;
-        });
+        for (let i = 0; i < dynamicBodies.length; i++) {
+            dynamicBodies[i].render.fillStyle = color;
+        }
     }
 
     boundaries = createBoundaries(config.width, config.height);
@@ -170,12 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    initializeShapesOnce();
-                    obs.disconnect();
-                }
-            });
+            if (entries[0].isIntersecting) {
+                initializeShapesOnce();
+                obs.disconnect();
+            }
         }, { threshold: 0.1 });
         observer.observe(container);
     } else {
@@ -184,13 +211,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupMouseControl();
 
+    const runner = Runner.create();
     Render.run(render);
-    Runner.run(Runner.create(), engine);
+    Runner.run(runner, engine);
 
     window.addEventListener('resize', handleResize);
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateShapeColors);
+    
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    darkModeMediaQuery.addEventListener('change', updateShapeColors);
 
     Events.on(engine, 'beforeUpdate', throttledCheckAndResetShapes);
 
-    render.canvas.addEventListener('wheel', function(e) {}, { passive: true });
+    function cleanup() {
+        window.removeEventListener('resize', handleResize);
+        darkModeMediaQuery.removeEventListener('change', updateShapeColors);
+        Events.off(engine, 'beforeUpdate', throttledCheckAndResetShapes);
+        Runner.stop(runner);
+        Render.stop(render);
+        World.clear(engine.world);
+        Engine.clear(engine);
+        render.canvas.remove();
+        render.canvas = null;
+        render.context = null;
+        render.textures = {};
+    }
+
+    container.cleanup = cleanup;
 });
