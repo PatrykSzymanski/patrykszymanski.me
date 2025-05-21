@@ -4,12 +4,12 @@
   "description": "Patryk Szymański's UX/Product Designer Portfolio",
   "main": "index.js",
   "scripts": {
+    "build:cloudflare": "npm run clean && eleventy",
     "clean": "rm -rf _site",
-    "build": "npm ci && npm run clean && eleventy",
-    "build:local": "npm update && npm prune && npm run clean && eleventy",
+    "build": "npm run clean && npm update && npm prune && npm ci && eleventy",
     "dev": "npm run clean && eleventy --serve",
     "serve": "eleventy --serve",
-    "preview": "npm run build:local && npm run serve",
+    "preview": "npm run build && npm run serve",
     "debug": "DEBUG=* eleventy"
   },
   "keywords": [

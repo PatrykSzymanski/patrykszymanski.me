@@ -14,6 +14,7 @@
       4.1 Containers, gap and margin utilities
    5. Components
       5.1 HR, images, figures, buttons, cards, etc.
+      5.2 Card animation
    6. Navigation & footer
    7. Icons and links
    8. Color variations
@@ -78,6 +79,23 @@
   --dark-link-color: var(--color-purple-light);
   --dark-link-hover-bg: var(--color-dark-gray);
   --color-shape: var(--color-black);
+  
+  /* Card Animation Configuration */
+  --ccc-card-width: 345px;
+  --ccc-card-height: 226px;
+  --ccc-card-gap: 24px;
+  --ccc-container-height: 524px;
+  --ccc-track-height: 226px; /* Match exactly with card height */
+  --ccc-track-gap: 24px;
+  --ccc-cards-per-track: 5;
+  --ccc-duplicated-cards: 5;
+  --ccc-total-cards: calc(var(--ccc-cards-per-track) + var(--ccc-duplicated-cards));
+  --ccc-track-width: calc(var(--ccc-total-cards) * var(--ccc-card-width) + (var(--ccc-total-cards) - 1) * var(--ccc-card-gap));
+  --ccc-scroll-distance: calc(var(--ccc-cards-per-track) * var(--ccc-card-width) + var(--ccc-cards-per-track) * var(--ccc-card-gap));
+  --ccc-animation-duration: 25s;
+  --ccc-top-track-delay: -2.34s;
+  --ccc-middle-track-delay: -10s;
+  --ccc-bottom-track-delay: -5s;
 }
 
 /* 1.3 Dark mode variables */
@@ -359,6 +377,103 @@ button {
   width: fit-content;
 }
 
+/* 5.2 Card animation */
+.card-animation-container {
+  position: relative;
+  width: 100%;
+  height: var(--ccc-container-height);
+  overflow: hidden;
+  background-color: #000;
+}
+
+.track {
+  position: absolute;
+  height: var(--ccc-track-height);
+  width: 100%;
+  overflow: hidden;
+  contain: content;
+}
+
+.top-track {
+  top: -76px;
+}
+
+.middle-track {
+  top: 174px;
+}
+
+.bottom-track {
+  top: 424px;
+}
+
+.track-inner {
+  display: flex;
+  gap: var(--ccc-card-gap);
+  width: var(--ccc-track-width);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--ccc-animation-duration);
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.track-rtl .track-inner {
+  animation-name: scrollRTL;
+}
+
+.track-ltr .track-inner {
+  animation-name: scrollLTR;
+}
+
+.top-track .track-inner {
+  animation-delay: var(--ccc-top-track-delay);
+}
+.middle-track .track-inner {
+  animation-delay: var(--ccc-middle-track-delay);
+}
+.bottom-track .track-inner {
+  animation-delay: var(--ccc-bottom-track-delay);
+}
+
+.block {
+  width: var(--ccc-card-width);
+  height: var(--ccc-card-height);
+  flex-shrink: 0;
+}
+
+.block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes scrollRTL {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--ccc-scroll-distance)));
+  }
+}
+
+@keyframes scrollLTR {
+  0% {
+    transform: translateX(calc(-1 * var(--ccc-scroll-distance)));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track-inner {
+    animation: none;
+    transform: translateX(calc(-1 * var(--ccc-scroll-distance) / 4));
+  }
+}
+
 /* ==========================================================================
    6. Navigation & footer
    ========================================================================== */
@@ -612,48 +727,6 @@ footer {
 }
 
 /* ==========================================================================
-   11. Lottie animation
-   ========================================================================== */
-#lottie {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  width: auto;
-  display: block;
-  object-fit: cover;
-}
-
-#lottie::before,
-#lottie::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 8%;
-  z-index: 2;
-}
-
-#lottie::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-}
-
-#lottie::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-}
-
-@media (prefers-color-scheme: dark) {
-  #lottie::before {
-    background: linear-gradient(to right, var(--color-background-dark), rgba(31, 31, 31, 0));
-  }
-
-  #lottie::after {
-    background: linear-gradient(to left, var(--color-background-dark), rgba(31, 31, 31, 0));
-  }
-}
-
-/* ==========================================================================
    12. Responsive styles
    ========================================================================== */
 
@@ -737,34 +810,12 @@ footer {
 
 /* 12.4 Screen max-width 620px */
 @media screen and (max-width: 620px) {
-  .lottie-container {
-    height: 400px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #lottie {
-    height: 100%;
-    width: 100%;
-    min-width: 300%;
-    display: block;
-    object-fit: cover;
-  }
-
   .display-heading {
     line-height: 104%;
   }
 
   .header-image-wrap {
     aspect-ratio: 1 / 1;
-  }
-
-  .iframe-1-1-aspect-ratio {
-    padding-bottom: 100%;
   }
 
   .header-image {

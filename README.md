@@ -24,7 +24,8 @@ This is the personal portfolio website for Patryk Szymański, a UX/Product Desig
 - CSS variables
 - Eleventy configuration and optimization
 - Interactive shapes with simple physics game
-- Security _headers
+- Security headers for improved site protection
+- Replaced Lottie animation with pure CSS animations
 
 ## Commands
 
