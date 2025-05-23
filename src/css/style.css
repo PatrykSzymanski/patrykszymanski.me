@@ -221,11 +221,6 @@ figure-caption {
 /* ------------------------------
    4. Layout & Structure
    ------------------------------ */
-.wrap {
-  max-width: 1140px;
-  margin: 0 auto;
-}
-
 .gap-48,
 .gap-32,
 .gap-24,
@@ -312,20 +307,10 @@ figure-caption {
   border-radius: 4px;
 }
 
-.sticker,
 .in-progress {
   background-color: var(--color-black);
   color: var(--color-white);
   border-radius: 4px;
-}
-
-.sticker {
-  align-self: stretch;
-  flex-direction: column;
-  margin: 0 -16px;
-  padding: 16px 0;
-  text-align: center;
-  flex-shrink: 0;
 }
 
 .in-progress {
@@ -528,6 +513,10 @@ button {
    ------------------------------ */
 nav {
   padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-white);
 }
 
 .nav-items {

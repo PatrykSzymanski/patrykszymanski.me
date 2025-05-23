@@ -29,11 +29,13 @@ This is the personal portfolio website for Patryk Szymański, a UX/Product Desig
 
 ## Commands
 
-- `npm run dev` - Start development server with auto-reload
-- `npm run build` - Production build (used by Cloudflare Pages)
-- `npm run build:local` - Local build with dependency updates
-- `npm run serve` - Serve pre-built site
-- `npm run preview` - Build locally and preview site
+- `npm run start` - Start development server with auto-reload
+- `npm run build` - Production build
+- `npm run clean` - Remove the output directory (`_site`)
+- `npm run serve` - Serve pre-built site from the output directory
+- `npm run preview` - Build locally and then preview the site
+- `npm run update` - Cleanly reinstall/update npm packages
+- `npm run debug` - Run Eleventy in debug mode for more verbose output
 
 ## Robots
 
