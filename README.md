@@ -27,15 +27,9 @@ This is the personal portfolio website for Patryk Szymański, a UX/Product Desig
 - Security headers for improved site protection
 - Replaced Lottie animation with pure CSS animations
 
-## Commands
+## Build commands
 
-- `npm run start` - Start development server with auto-reload
-- `npm run build` - Production build
-- `npm run clean` - Remove the output directory (`_site`)
-- `npm run serve` - Serve pre-built site from the output directory
-- `npm run preview` - Build locally and then preview the site
-- `npm run update` - Cleanly reinstall/update npm packages
-- `npm run debug` - Run Eleventy in debug mode for more verbose output
+- `npm run build` - Build the project for production
 
 ## Robots
 

@@ -513,10 +513,6 @@ button {
    ------------------------------ */
 nav {
   padding: 16px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: var(--color-white);
 }
 
 .nav-items {
