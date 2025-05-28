@@ -150,7 +150,7 @@ select {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --box-shadow: 6px 6px 0px var(--color-light-gray);
+    --box-shadow: 6px 6px 0px var(--color-medium-gray);
     --link-color: var(--dark-link-color);
     --link-hover-bg: var(--dark-link-hover-bg);
     --color-shape: var(--color-light-gray);
