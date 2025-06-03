@@ -1,0 +1,24 @@
+{
+  "name": "Patryk Szymański Portfolio",
+  "short_name": "Patryk's Portfolio",
+  "description": "Portfolio of Patryk Szymański, showcasing UX and Product Design projects",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32 48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
