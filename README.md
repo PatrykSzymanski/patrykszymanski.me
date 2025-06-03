@@ -26,6 +26,7 @@ This is the personal portfolio website for Patryk Szymański, a UX/Product Desig
 - Interactive shapes with simple physics game
 - Security headers for improved site protection
 - Replaced Lottie animation with pure CSS animations
+- Favicon cross-browser compatibility
 
 ## Build commands
 

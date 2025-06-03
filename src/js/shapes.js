@@ -3,315 +3,381 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('shapes-container');
     if (!container) return;
 
-    const WALL_THICKNESS = 50;
-    const MIN_HEIGHT = 300;
-    const SHAPE_SIZE = 180;
-    const TRIANGLE_RADIUS = 120;
-    const RESET_MARGIN = 50;
-    const RESET_THROTTLE = 100;
-
-    let currentShapeColor = '';
-
-    const config = {
-        width: container.clientWidth,
-        height: Math.max(container.clientHeight, MIN_HEIGHT),
-        update() {
-            this.width = container.clientWidth;
-            this.height = Math.max(container.clientHeight, MIN_HEIGHT);
-            return this;
-        }
+    // Consolidated configuration
+    const CONFIG = {
+        WALL_THICKNESS: 50,
+        MIN_HEIGHT: 300,
+        SHAPE_SIZE: 180,
+        TRIANGLE_RADIUS: 120,
+        RESET_MARGIN: 50,
+        RESET_THROTTLE: 100,
+        HIGHLIGHT_DURATION: 300, // Duration for collision highlights in ms
+        FORCE_THRESHOLD: 0.5, // Threshold for triggering force field (higher = stronger force needed)
+        FORCE_FIELD_ENABLED: false, // Disabled by default
+        PHYSICS: {
+            positionIterations: 6,
+            velocityIterations: 4,
+            gravity: { x: 0, y: 0.4 },
+            timing: { timeScale: 1 }
+        },
+        get width() { return container.clientWidth; },
+        get height() { return Math.max(container.clientHeight, this.MIN_HEIGHT); }
     };
 
-    const engine = Engine.create({
-        positionIterations: 6,
-        velocityIterations: 4
-    });
-    engine.world.gravity.y = 0.4;
+    // State variables
+    let currentShapeColor = '';
+    let dynamicBodies = [];
+    let boundaries = [];
+    let shapesInitialized = false;
+    let resizeRequested = false;
+    let lastResetTime = 0;
+    let mouseConstraint = null;
+    const shapeHighlights = new Map(); // Track collision highlights
 
+    // Engine setup with improved configuration
+    const engine = Engine.create({
+        positionIterations: CONFIG.PHYSICS.positionIterations,
+        velocityIterations: CONFIG.PHYSICS.velocityIterations
+    });
+    
+    // Set gravity directly using the CONFIG value
+    engine.world.gravity = CONFIG.PHYSICS.gravity;
+
+    // Renderer with optimized settings
     const render = Render.create({
         element: container,
-        engine,
+        engine: engine,
         options: {
-            width: config.width,
-            height: config.height,
+            width: CONFIG.width,
+            height: CONFIG.height,
             wireframes: false,
             background: 'transparent',
             pixelRatio: window.devicePixelRatio || 1,
             hasBounds: true
         }
     });
-
     render.canvas.style.imageRendering = 'pixelated';
 
+    // Color management
     function getShapeColor() {
         const newColor = getComputedStyle(document.documentElement).getPropertyValue('--color-shape').trim() || '#000000';
-        if (newColor !== currentShapeColor) {
-            currentShapeColor = newColor;
-        }
+        if (newColor !== currentShapeColor) currentShapeColor = newColor;
         return currentShapeColor;
     }
 
-    const commonShapeProps = {
-        restitution: 0.3,
-        friction: 0.1,
-        frictionAir: 0.01
-    };
-
+    // Shape creation with optimized properties
     function createShape(type, x, y, color) {
-        const renderProps = { render: { fillStyle: color } };
-        const props = { ...commonShapeProps, ...renderProps };
+        const baseProps = { 
+            restitution: 0.3, 
+            friction: 0.1, 
+            frictionAir: 0.01,
+            render: { fillStyle: color },
+            chamfer: type !== 'circle' ? { radius: 16, quality: 10 } : undefined
+        };
         
         switch (type) {
             case 'circle':
-                return Bodies.circle(x, y, SHAPE_SIZE / 2, props);
+                return Bodies.circle(x, y, CONFIG.SHAPE_SIZE / 2, baseProps);
             case 'rectangle':
-                return Bodies.rectangle(x, y, SHAPE_SIZE, SHAPE_SIZE, {
-                    ...props,
-                    chamfer: { radius: 16, quality: 10 }
-                });
+                return Bodies.rectangle(x, y, CONFIG.SHAPE_SIZE, CONFIG.SHAPE_SIZE, baseProps);
             case 'triangle':
-                return Bodies.polygon(x, y, 3, TRIANGLE_RADIUS, {
-                    ...props,
-                    chamfer: { radius: 16, quality: 10 }
-                });
+                return Bodies.polygon(x, y, 3, CONFIG.TRIANGLE_RADIUS, baseProps);
             default:
-                return Bodies.rectangle(x, y, SHAPE_SIZE, SHAPE_SIZE, { ...props, render: { fillStyle: '#dddddd' } });
+                return Bodies.rectangle(x, y, CONFIG.SHAPE_SIZE, CONFIG.SHAPE_SIZE, baseProps);
         }
     }
 
-    const boundaryOptions = { isStatic: true, render: { visible: false } };
-    
-    function createBoundaries(width, height) {
+    // Boundary creation
+    function createBoundaries() {
+        const { width, height, WALL_THICKNESS } = CONFIG;
+        const opts = { 
+            isStatic: true, 
+            render: { 
+                visible: true,
+                fillStyle: 'rgba(255, 255, 255, 0.05)', // Very subtle visibility
+                lineWidth: 0
+            }
+        };
+        
         return [
-            Bodies.rectangle(width / 2, height + WALL_THICKNESS / 2, width, WALL_THICKNESS, boundaryOptions),
-            Bodies.rectangle(width / 2, -WALL_THICKNESS / 2, width, WALL_THICKNESS, boundaryOptions),
-            Bodies.rectangle(-WALL_THICKNESS / 2, height / 2, WALL_THICKNESS, height, boundaryOptions),
-            Bodies.rectangle(width + WALL_THICKNESS / 2, height / 2, WALL_THICKNESS, height, boundaryOptions)
+            Bodies.rectangle(width / 2, height + WALL_THICKNESS / 2, width, WALL_THICKNESS, opts), // bottom
+            Bodies.rectangle(width / 2, -WALL_THICKNESS / 2, width, WALL_THICKNESS, opts),         // top
+            Bodies.rectangle(-WALL_THICKNESS / 2, height / 2, WALL_THICKNESS, height, opts),       // left
+            Bodies.rectangle(width + WALL_THICKNESS / 2, height / 2, WALL_THICKNESS, height, opts) // right
         ];
     }
 
-    let dynamicBodies = [];
-    let boundaries = [];
-
-    function updateDynamicBodiesCache() {
-        try {
-            const allBodies = Composite.allBodies(engine.world);
-            dynamicBodies = allBodies.filter(body => !body.isStatic);
-        } catch (error) {
-            console.error('Failed to update dynamic bodies cache:', error);
-            dynamicBodies = [];
-        }
-    }
-
-    let shapesInitialized = false;
-    let initializationAttempts = 0;
-    const MAX_INIT_ATTEMPTS = 3;
-    
-    function initializeShapesOnce() {
-        if (!shapesInitialized && initializationAttempts < MAX_INIT_ATTEMPTS) {
-            initializationAttempts++;
-            initializeShapes();
-            
-            // Verify shapes were actually added
-            setTimeout(() => {
-                if (dynamicBodies.length === 0 && initializationAttempts < MAX_INIT_ATTEMPTS) {
-                    console.warn(`Shape initialization attempt ${initializationAttempts} failed, retrying...`);
-                    shapesInitialized = false;
-                    initializeShapesOnce();
-                } else {
-                    shapesInitialized = true;
-                }
-            }, 100);
-        }
-    }
-
+    // Initialize shapes with better positioning logic
     function initializeShapes() {
-        try {
-            const color = getShapeColor();
-            const types = ['rectangle', 'circle', 'triangle'];
-            const shapes = [];
+        if (shapesInitialized) return;
+        
+        const color = getShapeColor();
+        const types = ['rectangle', 'circle', 'triangle'];
+        const shapes = [];
+        
+        // Create shapes with more randomized distribution
+        types.forEach((type) => {
+            // Use a more random distribution across the whole container
+            const margin = CONFIG.SHAPE_SIZE;
+            const x = margin + Math.random() * (CONFIG.width - margin * 2);
+            const y = margin + Math.random() * (CONFIG.height / 2);
             
-            for (let i = 0; i < types.length; i++) {
-                const x = Math.random() * (config.width - SHAPE_SIZE) + SHAPE_SIZE / 2;
-                const y = Math.random() * (config.height / 2) + SHAPE_SIZE / 2;
-                shapes.push(createShape(types[i], x, y, color));
-            }
-            
-            Composite.add(engine.world, shapes);
-            updateDynamicBodiesCache();
-        } catch (error) {
-            console.error('Failed to initialize shapes:', error);
-            setTimeout(() => {
-                try {
-                    updateDynamicBodiesCache();
-                } catch (retryError) {
-                    console.error('Failed to update dynamic bodies cache on retry:', retryError);
-                }
-            }, 100);
-        }
+            shapes.push(createShape(type, x, y, color));
+        });
+        
+        // Add shapes and update the dynamic bodies cache
+        World.add(engine.world, shapes);
+        updateDynamicBodiesCache();
+        shapesInitialized = true;
     }
 
-    const resetPosition = { x: 0, y: 0 };
-    const zeroVelocity = { x: 0, y: 0 };
-    
+    // Helper to update dynamic bodies cache
+    function updateDynamicBodiesCache() {
+        dynamicBodies = Composite.allBodies(engine.world).filter(body => !body.isStatic);
+    }
+
+    // Reset shape position when out of bounds
     function resetShapeIfOutOfBounds(body) {
-        const { width, height } = config;
         const { x, y } = body.position;
+        const { width, height, RESET_MARGIN } = CONFIG;
         
-        if (x < -RESET_MARGIN || x > width + RESET_MARGIN ||
+        if (x < -RESET_MARGIN || x > width + RESET_MARGIN || 
             y < -RESET_MARGIN || y > height + RESET_MARGIN) {
-            resetPosition.x = width / 2 + (Math.random() - 0.5) * 100;
-            resetPosition.y = height / 2 + (Math.random() - 0.5) * 100;
-            Body.setPosition(body, resetPosition);
-            Body.setVelocity(body, zeroVelocity);
+            
+            Body.setPosition(body, {
+                x: width / 2 + (Math.random() - 0.5) * 100,
+                y: height / 2 + (Math.random() - 0.5) * 100
+            });
+            Body.setVelocity(body, { x: 0, y: 0 });
             Body.setAngularVelocity(body, 0);
         }
     }
 
-    let lastResetTime = 0;
+    // Throttled shape reset check
     function throttledCheckAndResetShapes() {
         const now = Date.now();
-        if (now - lastResetTime > RESET_THROTTLE) {
-            for (let i = 0; i < dynamicBodies.length; i++) {
-                resetShapeIfOutOfBounds(dynamicBodies[i]);
-            }
+        if (now - lastResetTime > CONFIG.RESET_THROTTLE) {
+            dynamicBodies.forEach(resetShapeIfOutOfBounds);
             lastResetTime = now;
         }
     }
 
+    // Mouse control setup with improved event handling
     function setupMouseControl() {
-        if (!render || !render.canvas) {
-            console.error('Canvas not ready for mouse control setup');
-            return null;
-        }
-        
         const mouse = Mouse.create(render.canvas);
         
-        render.canvas.removeEventListener('mousewheel', mouse.mousewheel);
-        render.canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel);
-        
-        const mouseConstraint = MouseConstraint.create(engine, {
+        mouseConstraint = MouseConstraint.create(engine, {
             mouse: mouse,
             constraint: { 
-                stiffness: 0.2, 
-                render: { visible: false } 
+                stiffness: 0.2,
+                render: { visible: false }
+            },
+            collisionFilter: {
+                category: 0x0001,
+                mask: 0xFFFFFFFF,
+                group: 0
             }
         });
         
-        Composite.add(engine.world, mouseConstraint);
-        render.mouse = mouse;
+        // Use Matter.js's event system for efficient cursor handling
+        Events.on(mouseConstraint, 'mousemove', function(event) {
+            const query = Query.point(dynamicBodies, event.mouse.position);
+            render.canvas.style.cursor = query.length > 0 ? 'pointer' : 'default';
+        });
         
-        render.canvas.addEventListener('mousemove', (event) => {
-            const mousePosition = { x: event.offsetX, y: event.offsetY };
-            if (dynamicBodies.length === 0) {
-                updateDynamicBodiesCache();
-            }
-            const hoveredBodies = Query.point(dynamicBodies, mousePosition);
-            render.canvas.style.cursor = hoveredBodies.length > 0 ? 'pointer' : 'default';
-        }, { passive: true });
-        
+        // Register wheel event handler
         render.canvas.addEventListener('wheel', (event) => {
-            const originalStiffness = mouseConstraint.constraint.stiffness;
-            
             mouseConstraint.constraint.stiffness = 0;
-            
-            setTimeout(() => {
-                mouseConstraint.constraint.stiffness = originalStiffness;
-            }, 50);
+            setTimeout(() => mouseConstraint.constraint.stiffness = 0.2, 50);
         }, { passive: true });
         
-        return mouseConstraint;
+        // Add mouse constraint to world
+        World.add(engine.world, mouseConstraint);
+        render.mouse = mouse;
     }
 
-    let resizeRequested = false;
+    // Resize handling with improved canvas scaling
     function handleResize() {
-        if (!resizeRequested) {
-            resizeRequested = true;
-            requestAnimationFrame(() => {
-                resizeRequested = false;
-                config.update();
-                const { width, height } = config;
-                
-                render.bounds.max.x = width;
-                render.bounds.max.y = height;
-                render.options.width = width;
-                render.options.height = height;
-                render.canvas.width = width;
-                render.canvas.height = height;
-                
-                Composite.remove(engine.world, boundaries);
-                boundaries = createBoundaries(width, height);
-                Composite.add(engine.world, boundaries);
-                
-                updateDynamicBodiesCache();
-            });
-        }
+        if (resizeRequested) return;
+        resizeRequested = true;
+        
+        requestAnimationFrame(() => {
+            resizeRequested = false;
+            const { width, height } = CONFIG;
+            
+            // Update render bounds and dimensions
+            render.bounds.max.x = width;
+            render.bounds.max.y = height;
+            render.options.width = width;
+            render.options.height = height;
+            render.canvas.width = width;
+            render.canvas.height = height;
+            
+            // Update boundaries
+            World.remove(engine.world, boundaries);
+            boundaries = createBoundaries();
+            World.add(engine.world, boundaries);
+        });
     }
 
+    // Update shape colors
     function updateShapeColors() {
         const color = getShapeColor();
-        for (let i = 0; i < dynamicBodies.length; i++) {
-            dynamicBodies[i].render.fillStyle = color;
-        }
+        dynamicBodies.forEach(body => {
+            // Check if shape is currently highlighted
+            const highlightData = shapeHighlights.get(body.id);
+            
+            // Only update color if not currently highlighted
+            if (!highlightData || !highlightData.timer) {
+                body.render.fillStyle = color;
+                
+                // Update the stored original color for future highlights
+                if (highlightData) {
+                    highlightData.originalColor = color;
+                }
+            }
+        });
     }
 
-    boundaries = createBoundaries(config.width, config.height);
-    Composite.add(engine.world, boundaries);
+    // Add collision detection for wall hits with force field effect
+    Events.on(engine, 'collisionStart', function(event) {
+        // Skip if force field is disabled
+        if (!CONFIG.FORCE_FIELD_ENABLED) return;
+        
+        const pairs = event.pairs;
+        
+        pairs.forEach(function(pair) {
+            const bodyA = pair.bodyA;
+            const bodyB = pair.bodyB;
+            
+            // Check if one body is a dynamic shape and the other is a boundary
+            if ((dynamicBodies.includes(bodyA) && boundaries.includes(bodyB)) || 
+                (dynamicBodies.includes(bodyB) && boundaries.includes(bodyA))) {
+                
+                // Calculate collision force based on velocity
+                const dynamicBody = dynamicBodies.includes(bodyA) ? bodyA : bodyB;
+                const velocityMagnitude = Math.sqrt(
+                    dynamicBody.velocity.x * dynamicBody.velocity.x + 
+                    dynamicBody.velocity.y * dynamicBody.velocity.y
+                );
+                
+                // Only show force field for stronger impacts
+                if (velocityMagnitude > CONFIG.FORCE_THRESHOLD) {
+                    // Get collision point
+                    const collisionPoint = pair.collision.supports[0] || pair.collision.position;
+                    
+                    // Create force field effect with size based on impact strength
+                    const forceMultiplier = Math.min(velocityMagnitude / 5, 2); // Cap the maximum multiplier
+                    createForceFieldEffect(collisionPoint.x, collisionPoint.y, forceMultiplier);
+                }
+            }
+        });
+    });
 
-    let mouseConstraint;
+    // Function to create force field effect
+    function createForceFieldEffect(x, y, forceMultiplier = 1) {
+        // Create a smaller force field circle effect
+        const forcefield = Bodies.circle(x, y, 10, { 
+            isStatic: true,
+            collisionFilter: { group: -1, category: 0, mask: 0 }, // No collision
+            render: { 
+                fillStyle: 'rgba(255, 30, 30, 0.7)', // Red glow color
+                lineWidth: 0,
+                opacity: 0.9
+            },
+            isSensor: true,
+            label: 'forcefield'
+        });
+        
+        // Add to world
+        World.add(engine.world, forcefield);
+        
+        // Animation variables
+        let opacity = 0.9;
+        let scale = 1;
+        let timer = null;
+        
+        // Animate the effect
+        timer = setInterval(() => {
+            // Update scale and opacity
+            scale += 0.15;
+            opacity -= 0.1;
+            
+            if (opacity <= 0) {
+                // Remove the force field when animation completes
+                clearInterval(timer);
+                World.remove(engine.world, forcefield);
+                return;
+            }
+            
+            // Update the force field appearance
+            forcefield.render.opacity = opacity;
+            
+            // Resize the force field based on impact strength
+            Body.scale(forcefield, 1 + (0.15 * forceMultiplier), 1 + (0.15 * forceMultiplier));
+        }, 16); // Approximately 60 FPS
+    }
 
+    // Initialize boundaries
+    boundaries = createBoundaries();
+    World.add(engine.world, boundaries);
+
+    // Initialize shapes when visible
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries, obs) => {
             if (entries[0].isIntersecting) {
-                setTimeout(() => {
-                    initializeShapesOnce();
-                    setTimeout(() => {
-                        mouseConstraint = setupMouseControl();
-                    }, 150);
-                }, 50);
+                initializeShapes();
+                setupMouseControl();
                 obs.disconnect();
             }
         }, { threshold: 0.1 });
         observer.observe(container);
     } else {
-        initializeShapesOnce();
-        setTimeout(() => {
-            mouseConstraint = setupMouseControl();
-        }, 150);
+        initializeShapes();
+        setupMouseControl();
     }
 
+    // Start simulation with optimized runner
     const runner = Runner.create();
-    Render.run(render);
     Runner.run(runner, engine);
+    Render.run(render);
 
+    // Register event listeners
     window.addEventListener('resize', handleResize);
-    
-    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    darkModeMediaQuery.addEventListener('change', updateShapeColors);
-
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateShapeColors);
     Events.on(engine, 'beforeUpdate', throttledCheckAndResetShapes);
 
-    function cleanup() {
+    // Add public method to toggle force field
+    container.setForceField = function(enabled) {
+        CONFIG.FORCE_FIELD_ENABLED = !!enabled;
+    };
+
+    // Cleanup function with comprehensive teardown
+    container.cleanup = function() {
+        // Remove event listeners
         window.removeEventListener('resize', handleResize);
-        darkModeMediaQuery.removeEventListener('change', updateShapeColors);
+        window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', updateShapeColors);
         Events.off(engine, 'beforeUpdate', throttledCheckAndResetShapes);
+        Events.off(engine, 'collisionStart'); // Remove collision event listener
         
-        if (mouseConstraint) {
-            Composite.remove(engine.world, mouseConstraint);
-        }
-        
+        // Stop physics and rendering
         Runner.stop(runner);
         Render.stop(render);
+        
+        // Clean up Matter.js objects
+        if (mouseConstraint) {
+            World.remove(engine.world, mouseConstraint);
+        }
+        
         World.clear(engine.world);
         Engine.clear(engine);
         
+        // Clean up DOM elements
         if (render.canvas) {
             render.canvas.remove();
+            render.canvas = null;
+            render.context = null;
+            render.textures = {};
         }
-        render.canvas = null;
-        render.context = null;
-        render.textures = {};
-    }
-
-    container.cleanup = cleanup;
+    };
 });
