@@ -94,30 +94,61 @@ document.addEventListener('DOMContentLoaded', () => {
     let boundaries = [];
 
     function updateDynamicBodiesCache() {
-        dynamicBodies = Composite.allBodies(engine.world).filter(body => !body.isStatic);
+        try {
+            const allBodies = Composite.allBodies(engine.world);
+            dynamicBodies = allBodies.filter(body => !body.isStatic);
+        } catch (error) {
+            console.error('Failed to update dynamic bodies cache:', error);
+            dynamicBodies = [];
+        }
     }
 
     let shapesInitialized = false;
+    let initializationAttempts = 0;
+    const MAX_INIT_ATTEMPTS = 3;
+    
     function initializeShapesOnce() {
-        if (!shapesInitialized) {
+        if (!shapesInitialized && initializationAttempts < MAX_INIT_ATTEMPTS) {
+            initializationAttempts++;
             initializeShapes();
-            shapesInitialized = true;
+            
+            // Verify shapes were actually added
+            setTimeout(() => {
+                if (dynamicBodies.length === 0 && initializationAttempts < MAX_INIT_ATTEMPTS) {
+                    console.warn(`Shape initialization attempt ${initializationAttempts} failed, retrying...`);
+                    shapesInitialized = false;
+                    initializeShapesOnce();
+                } else {
+                    shapesInitialized = true;
+                }
+            }, 100);
         }
     }
 
     function initializeShapes() {
-        const color = getShapeColor();
-        const types = ['rectangle', 'circle', 'triangle'];
-        const shapes = [];
-        
-        for (let i = 0; i < types.length; i++) {
-            const x = Math.random() * (config.width - SHAPE_SIZE) + SHAPE_SIZE / 2;
-            const y = Math.random() * (config.height / 2) + SHAPE_SIZE / 2;
-            shapes.push(createShape(types[i], x, y, color));
+        try {
+            const color = getShapeColor();
+            const types = ['rectangle', 'circle', 'triangle'];
+            const shapes = [];
+            
+            for (let i = 0; i < types.length; i++) {
+                const x = Math.random() * (config.width - SHAPE_SIZE) + SHAPE_SIZE / 2;
+                const y = Math.random() * (config.height / 2) + SHAPE_SIZE / 2;
+                shapes.push(createShape(types[i], x, y, color));
+            }
+            
+            Composite.add(engine.world, shapes);
+            updateDynamicBodiesCache();
+        } catch (error) {
+            console.error('Failed to initialize shapes:', error);
+            setTimeout(() => {
+                try {
+                    updateDynamicBodiesCache();
+                } catch (retryError) {
+                    console.error('Failed to update dynamic bodies cache on retry:', retryError);
+                }
+            }, 100);
         }
-        
-        Composite.add(engine.world, shapes);
-        updateDynamicBodiesCache();
     }
 
     const resetPosition = { x: 0, y: 0 };
@@ -149,6 +180,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setupMouseControl() {
+        if (!render || !render.canvas) {
+            console.error('Canvas not ready for mouse control setup');
+            return null;
+        }
+        
         const mouse = Mouse.create(render.canvas);
         
         render.canvas.removeEventListener('mousewheel', mouse.mousewheel);
@@ -167,6 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         render.canvas.addEventListener('mousemove', (event) => {
             const mousePosition = { x: event.offsetX, y: event.offsetY };
+            if (dynamicBodies.length === 0) {
+                updateDynamicBodiesCache();
+            }
             const hoveredBodies = Query.point(dynamicBodies, mousePosition);
             render.canvas.style.cursor = hoveredBodies.length > 0 ? 'pointer' : 'default';
         }, { passive: true });
@@ -203,6 +242,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 Composite.remove(engine.world, boundaries);
                 boundaries = createBoundaries(width, height);
                 Composite.add(engine.world, boundaries);
+                
+                updateDynamicBodiesCache();
             });
         }
     }
@@ -217,19 +258,27 @@ document.addEventListener('DOMContentLoaded', () => {
     boundaries = createBoundaries(config.width, config.height);
     Composite.add(engine.world, boundaries);
 
+    let mouseConstraint;
+
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries, obs) => {
             if (entries[0].isIntersecting) {
-                initializeShapesOnce();
+                setTimeout(() => {
+                    initializeShapesOnce();
+                    setTimeout(() => {
+                        mouseConstraint = setupMouseControl();
+                    }, 150);
+                }, 50);
                 obs.disconnect();
             }
         }, { threshold: 0.1 });
         observer.observe(container);
     } else {
         initializeShapesOnce();
+        setTimeout(() => {
+            mouseConstraint = setupMouseControl();
+        }, 150);
     }
-
-    setupMouseControl();
 
     const runner = Runner.create();
     Render.run(render);
@@ -246,11 +295,19 @@ document.addEventListener('DOMContentLoaded', () => {
         window.removeEventListener('resize', handleResize);
         darkModeMediaQuery.removeEventListener('change', updateShapeColors);
         Events.off(engine, 'beforeUpdate', throttledCheckAndResetShapes);
+        
+        if (mouseConstraint) {
+            Composite.remove(engine.world, mouseConstraint);
+        }
+        
         Runner.stop(runner);
         Render.stop(render);
         World.clear(engine.world);
         Engine.clear(engine);
-        render.canvas.remove();
+        
+        if (render.canvas) {
+            render.canvas.remove();
+        }
         render.canvas = null;
         render.context = null;
         render.textures = {};
