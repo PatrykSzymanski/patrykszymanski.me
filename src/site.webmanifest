@@ -1,23 +1,23 @@
 {
-  "name": "Patryk Szymański - UX/Product Designer Portfolio",
+  "name": "Patryk Szymański Portfolio",
   "short_name": "Patryk's Portfolio",
-  "description": "UX/Product Designer based in Kraków, Poland. See my portfolio and case studies",
+  "description": "Portfolio of Patryk Szymański, showcasing UX and Product Design projects",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
-  "scope": "/",
   "lang": "en",
   "icons": [
     {
-      "src": "/favicon.png",
-      "sizes": "320x320",
-      "type": "image/png",
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
       "src": "/favicon.ico",
-      "sizes": "16x16 32x32 48x48",
+      "sizes": "32x32 48x48",
       "type": "image/x-icon"
     }
   ]
