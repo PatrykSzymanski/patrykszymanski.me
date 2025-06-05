@@ -19,8 +19,7 @@
   ],
   "author": "Patryk Szymański",
   "license": "UNLICENSED",
-  "private": true,
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.0"
+    "@11ty/eleventy": "^3.1.1"
   }
 }
